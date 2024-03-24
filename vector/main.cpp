@@ -1,6 +1,6 @@
+#include "studentas.h"
+#include "../include/funkcijos.h"
 #include "../include/timer.h"
-#include "../include/studentas.h"
-#include "funkcijos.h"
 
 int main() {
     std::vector<Studentas> studentai;

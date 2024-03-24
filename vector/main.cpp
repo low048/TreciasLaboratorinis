@@ -1,6 +1,6 @@
 #include "../include/timer.h"
+#include "../include/studentas.h"
 #include "funkcijos.h"
-
 
 int main() {
     std::vector<Studentas> studentai;
@@ -21,45 +21,49 @@ int main() {
             << "Pasirinkimas: ";
         meniuPasirinkimas = patikrintiSkaiciu(1, 7);
         switch(meniuPasirinkimas) {
-           case 1: {
+            case 1: {
                 //duomenys įvedami ranka
-                Studentas naujasStudentas;
+                std::string vardas, pavarde;
+                int egz, pazymys;
+                std::vector<int> namuDarbai;
                 std::cout << "  Įveskite studento vardą: ";
-                std::cin >> naujasStudentas.vardas;
+                std::cin >> vardas;
                 std::cout << "  Įveskite studento pavardę: ";
-                std::cin >> naujasStudentas.pavarde;
+                std::cin >> pavarde;
                 std::cout << "  Įveskite studento egzamino rezultatą: ";
-                naujasStudentas.egz = patikrintiSkaiciu(0, 10);
+                egz = patikrintiSkaiciu(0, 10);
+                int sum = 0;
                 while (true) {
-                    std::cout << "    Įveskite #" << naujasStudentas.namuDarbai.size() + 1 << " namų darbo rezultatą (0-10), -1 baigia įvedimą: ";
-                    int pazymys = patikrintiSkaiciu(-1, 10);
+                    std::cout << "    Įveskite #" << namuDarbai.size() + 1 << " namų darbo rezultatą (0-10), -1 baigia įvedimą: ";
+                    pazymys = patikrintiSkaiciu(-1, 10);
                     if (pazymys == -1)
                         break;
-                    naujasStudentas.namuDarbai.push_back(pazymys);
-                    naujasStudentas.sum += pazymys;
+                    namuDarbai.push_back(pazymys);
+                    sum += pazymys;
                 }
-                naujasStudentas.apskaiciuotiGalutini();
-                studentai.push_back(naujasStudentas);
+                studentai.push_back(Studentas(vardas, pavarde, egz, namuDarbai, sum));
                 break;
             }
             case 2: {
                 //atsitiktinai generuojami tik pažymiai
-                Studentas naujasStudentas;
+                std::string vardas, pavarde;
+                int egz, pazymys;
+                std::vector<int> namuDarbai;
                 std::cout << "  Įveskite studento vardą: ";
-                std::cin >> naujasStudentas.vardas;
+                std::cin >> vardas;
                 std::cout << "  Įveskite studento pavardę: ";
-                std::cin >> naujasStudentas.pavarde;
+                std::cin >> pavarde;
                 std::cout << "  Įveskite studento egzamino rezultatą: ";
-                naujasStudentas.egz = patikrintiSkaiciu(0, 10);
+                egz = patikrintiSkaiciu(0, 10);
+                int sum = 0;
                 std::cout << "  Įveskite namų darbų skaičių: ";
                 int n = patikrintiSkaiciu(0, std::numeric_limits<int>::max());
                 for (int v = 0; v < n; v++) {
-                    int pazymys = generuotiAtsitiktiniSkaiciu(1, 10);
-                    naujasStudentas.namuDarbai.push_back(pazymys);
-                    naujasStudentas.sum += pazymys;
+                    pazymys = generuotiAtsitiktiniSkaiciu(1, 10);
+                    namuDarbai.push_back(pazymys);
+                    sum += pazymys;
                 }
-                naujasStudentas.apskaiciuotiGalutini();
-                studentai.push_back(naujasStudentas);
+                studentai.push_back(Studentas(vardas, pavarde, egz, namuDarbai, sum));
                 break;
             }
             case 3: {
@@ -69,17 +73,17 @@ int main() {
                 std::cout << "  Įveskite namų darbų skaičių: ";
                 int namuDarbuSkaicius = patikrintiSkaiciu(0, std::numeric_limits<int>::max());
                 for (int i = 0; i < studentuSkaicius; i++) {
-                    Studentas naujasStudentas;
-                    naujasStudentas.vardas = "Vardas" + std::to_string(i + 1);
-                    naujasStudentas.pavarde = "Pavarde" + std::to_string(i + 1);
-                    naujasStudentas.egz = generuotiAtsitiktiniSkaiciu(1, 10);;
+                    std::string vardas = "Vardas" + std::to_string(i + 1);
+                    std::string pavarde = "Pavarde" + std::to_string(i + 1);
+                    int egz = generuotiAtsitiktiniSkaiciu(1, 10);
+                    std::vector<int> namuDarbai;
+                    int sum = 0;
                     for (int v = 0; v < namuDarbuSkaicius; v++) {
-                        int pazymys = generuotiAtsitiktiniSkaiciu(1, 10);;
-                        naujasStudentas.namuDarbai.push_back(pazymys);
-                        naujasStudentas.sum += pazymys;
+                        int pazymys = generuotiAtsitiktiniSkaiciu(1, 10);
+                        namuDarbai.push_back(pazymys);
+                        sum += pazymys;
                     }
-                    naujasStudentas.apskaiciuotiGalutini();
-                    studentai.push_back(naujasStudentas);
+                    studentai.push_back(Studentas(vardas, pavarde, egz, namuDarbai, sum));
                 }
                 break;
             }
@@ -91,7 +95,24 @@ int main() {
                 std::cout << "  Įveskite failo pavadinimą: ";
                 std::cin >> failoPavadinimas;
                 Timer t;
-                skaitytiIsFailo(studentai, failoPavadinimas);
+                try {
+                    std::ifstream file(failoPavadinimas);
+                    if (!file.is_open())
+                        throw std::runtime_error("nepavyko atidaryti failo " + failoPavadinimas);
+
+                    std::string eilute;
+                    while (std::getline(file, eilute)) {
+                        try {
+                            std::istringstream eilutesSrautas(eilute);
+                            studentai.push_back(Studentas(eilutesSrautas));
+                        } catch (std::exception& e) {
+                            std::cout << "Nuskaitant eilutę įvyko klaida: " << e.what() << '\n';
+                        }
+                    }
+                    file.close();
+                } catch (std::exception& e) {
+                    std::cout << "Nuskaitant failą įvyko klaida: " << e.what() << '\n';
+                }
                 std::cout << "Failo nuskaitymas užtruko " << t.elapsed() << " s\n";
                 timeSum += t.elapsed();
                 break;
@@ -137,14 +158,13 @@ int main() {
                 //studentų rūšiavimas pagal galutinius įvertinimus
                 std::cout << "Pasirinkite strategiją:\n1 - Pirmoji strategija\n2 - Antroji strategija\n3 - Trečioji strategija\nPasirinkimas: ";
                 int strategija = patikrintiSkaiciu(1, 3);
-
                 Timer t;
                 std::vector<Studentas> nepatenkinami;
                 switch (strategija) {
                     case 1: {
                         std::vector<Studentas> patenkinami;
                         for (const auto& studentas : studentai) {
-                            if (studentas.galutinisVid < 5) {
+                            if (studentas.getGalutinisVid() < 5) {
                                 nepatenkinami.push_back(studentas);
                             } else {
                                 patenkinami.push_back(studentas);
@@ -155,7 +175,7 @@ int main() {
                     }
                     case 2: {
                         for (auto it = studentai.begin(); it != studentai.end();) {
-                            if (it->galutinisVid < 5) {
+                            if (it->getGalutinisVid() < 5) {
                                 nepatenkinami.push_back(std::move(*it));
                                 it = studentai.erase(it);
                             } else {
@@ -165,7 +185,7 @@ int main() {
                         break;
                     }
                     case 3: {
-                        auto it = std::partition(studentai.begin(), studentai.end(), [](const Studentas& s) { return s.galutinisVid >= 5; });
+                        auto it = std::partition(studentai.begin(), studentai.end(), [](const Studentas& s) { return s.getGalutinisVid() >= 5; });
                         nepatenkinami.assign(std::make_move_iterator(it), std::make_move_iterator(studentai.end()));
                         studentai.erase(it, studentai.end());
                         break;
@@ -184,25 +204,25 @@ int main() {
                     std::cout << "Rikiuoti studentus pagal:\n1 - Vardą\n2 - Pavardę\n3 - Galutinį (Vid.)\n4 - Galutinį (Med.)\nPasirinkimas: ";
                     int rikiavimoPasirinkimas = patikrintiSkaiciu(1, 4);
                     Timer t2;
-                    rikiuotiStudentus(nepatenkinami, rikiavimoPasirinkimas);
-                    rikiuotiStudentus(studentai, rikiavimoPasirinkimas);
+                    Studentas::rikiuotiStudentus(nepatenkinami, rikiavimoPasirinkimas);
+                    Studentas::rikiuotiStudentus(studentai, rikiavimoPasirinkimas);
                     std::cout << "Rikiavimas užtruko " << t2.elapsed() << " s\n";
                     timeSum += t2.elapsed();
                 }
                 
                 Timer t3;
-                irasytiStudentuDuomenis(failoPavadinimas + "_nepatenkinami.txt", nepatenkinami);
+                Studentas::irasytiStudentuDuomenis(failoPavadinimas + "_nepatenkinami.txt", nepatenkinami);
                 std::cout << "Nepatenkinamų studentų įrašymas užtruko " << t3.elapsed() << " s\n";
                 timeSum += t3.elapsed();
 
                 Timer t4;
-                irasytiStudentuDuomenis(failoPavadinimas + "_patenkinami.txt", studentai);
+                Studentas::irasytiStudentuDuomenis(failoPavadinimas + "_patenkinami.txt", studentai);
                 std::cout << "Patenkinamų studentų įrašymas užtruko " << t4.elapsed() << " s\n";
                 timeSum += t4.elapsed();
 
                 std::cout << "Jungiami studentų konteineriai...\n";
                 std::move(nepatenkinami.begin(), nepatenkinami.end(), std::back_inserter(studentai));
- 
+
                 std::cout << "Išvis sugaišta laiko (be įvesties): " << timeSum << " s\n";
                 break;
             }
@@ -214,7 +234,7 @@ int main() {
                     std::cout << "Rikiuoti studentus pagal:\n1 - Vardą\n2 - Pavardę\n3 - Galutinį (Vid.)\n4 - Galutinį (Med.)\nPasirinkimas: ";
                     int rikiavimoPasirinkimas = patikrintiSkaiciu(1, 4);
                     Timer t;
-                    rikiuotiStudentus(studentai, rikiavimoPasirinkimas);
+                    Studentas::rikiuotiStudentus(studentai, rikiavimoPasirinkimas);
                     std::cout << "Rikiavimas užtruko " << t.elapsed() << " s\n";
                     timeSum += t.elapsed();
                 }
@@ -231,16 +251,16 @@ int main() {
         std::string failoPavadinimas;
         std::cin >> failoPavadinimas;
         Timer t;
-        irasytiStudentuDuomenis(failoPavadinimas + ".txt", studentai);
+        Studentas::irasytiStudentuDuomenis(failoPavadinimas + ".txt", studentai);
         timeSum += t.elapsed();
         std::cout << "Išvis sugaišta laiko (be įvesties): " << timeSum << " s\n";
     } else {
         std::cout << "Pavardė       Vardas        Galutinis (Vid.)  Galutinis (Med.)\n";
         std::cout << "-----------------------------------------------------------------\n";
         for (const auto& studentas : studentai) {
-            std::cout << std::left << std::setw(14) << studentas.pavarde << std::setw(14) << studentas.vardas
-                      << std::setw(18) << std::fixed << std::setprecision(2) << studentas.galutinisVid
-                      << std::setw(18) << studentas.galutinisMed << '\n';
+            std::cout << std::left << std::setw(14) << studentas.getPavarde() << std::setw(14) << studentas.getVardas()
+                      << std::setw(18) << std::fixed << std::setprecision(2) << studentas.getGalutinisVid()
+                      << std::setw(18) << studentas.getGalutinisMed() << '\n';
         }
     }
     std::cin.get();

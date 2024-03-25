@@ -108,6 +108,52 @@ Testavimas buvo atliktas su failais:
 | Patenkinamų stud. įrašymas               | 0.142035            | 0.868752             |
 | Visas laikas (be įvesties)               | 0.526567            | 3.66291              |
 
+### struct
+
+**Be optimizacijos**
+
+| Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
+|------------------------------------------|---------------------|----------------------|
+| Duomenų nuskaitymas                      | 0.541747            | 2.46997              |
+| Studentų rūšiavimas į dvi grupes         | 0.0115075           | 0.11541              |
+| Studentų rikiavimas (pagal galutinį vid.)| 0.0698631           | 1.08106              |
+| Nepatenkinamų stud. įrašymas             | 0.0548946           | 0.436914             |
+| Patenkinamų stud. įrašymas               | 0.0703248           | 0.641211             |
+| Visas laikas (be įvesties)               | 0.749497            | 4.74564              |
+
+**O1**
+
+| Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
+|------------------------------------------|---------------------|----------------------|
+| Duomenų nuskaitymas                      | 0.290606            | 1.48517              |
+| Studentų rūšiavimas į dvi grupes         | 0.003697            | 0.0302353            |
+| Studentų rikiavimas (pagal galutinį vid.)| 0.0313938           | 0.712122             |
+| Nepatenkinamų stud. įrašymas             | 0.0647145           | 0.413149             |
+| Patenkinamų stud. įrašymas               | 0.0688751           | 0.584924             |
+| Visas laikas (be įvesties)               | 0.46036             | 3.22672              |
+
+**O2**
+
+| Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
+|------------------------------------------|---------------------|----------------------|
+| Duomenų nuskaitymas                      | 0.283995            | 1.38548              |
+| Studentų rūšiavimas į dvi grupes         | 0.0037979           | 0.0291382            |
+| Studentų rikiavimas (pagal galutinį vid.)| 0.0297118           | 0.708364             |
+| Nepatenkinamų stud. įrašymas             | 0.0468595           | 0.396163             |
+| Patenkinamų stud. įrašymas               | 0.065689            | 0.516838             |
+| Visas laikas (be įvesties)               | 0.431178            | 3.03701              |
+
+**O3**
+
+| Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
+|------------------------------------------|---------------------|----------------------|
+| Duomenų nuskaitymas                      | 0.287417            | 1.37375              |
+| Studentų rūšiavimas į dvi grupes         | 0.0041371           | 0.0318236            |
+| Studentų rikiavimas (pagal galutinį vid.)| 0.030787            | 0.729698             |
+| Nepatenkinamų stud. įrašymas             | 0.0473366           | 0.408425             |
+| Patenkinamų stud. įrašymas               | 0.0613951           | 0.548542             |
+| Visas laikas (be įvesties)               | 0.43228             | 3.09336              |
+
 # Testavimo rezultatai (v1.0)
 
 ## 3-as tyrimas - veiksmų su įvairaus dydžio failais veikimo spartos palyginimas naudojant skirtingus konteinerius

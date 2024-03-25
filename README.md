@@ -154,6 +154,13 @@ Testavimas buvo atliktas su failais:
 | Patenkinamų stud. įrašymas               | 0.0613951           | 0.548542             |
 | Visas laikas (be įvesties)               | 0.43228             | 3.09336              |
 
+### Failų dydžiai
+
+| Dydis (KB) | Be optimizacijos | O1 | O2 | O3 |
+|------------|------------------|----|----|----|
+| class      | 297              | 143| 140| 142|
+| struct     | 292              | 137| 133| 133|
+
 # Testavimo rezultatai (v1.0)
 
 ## 3-as tyrimas - veiksmų su įvairaus dydžio failais veikimo spartos palyginimas naudojant skirtingus konteinerius

@@ -169,7 +169,7 @@ Naudojamas `std::list` konteineris su 2-ąja strategija, kadangi ši realizacija
 | class      | 297              | 143| 140| 142|
 | struct     | 292              | 137| 133| 133|
 
-# Testavimo rezultatai (v1.0)
+# Testavimo rezultatai (SENA VERSIJA - v1.0)
 
 ## 3-as tyrimas - veiksmų su įvairaus dydžio failais veikimo spartos palyginimas naudojant skirtingus konteinerius
 ### std::vector:

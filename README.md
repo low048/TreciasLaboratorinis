@@ -37,7 +37,7 @@
 - Sekite instrukcijas, kurios rodomos konsolės langelyje.
 
 Programos paleidimo pavyzdys:
-![pvz](https://raw.githubusercontent.com/low048/PirmasLaboratorinis/V1.0/TyrimuNuotraukos/KetvirtasTyrimas/1_strategija/list/1.png)
+![pvz](https://raw.githubusercontent.com/low048/AntrasLaboratorinis/V1.1/TyrimuNuotraukos/PenktasTyrimas/struct/O3/2.png)
 
 </details>
 
@@ -62,6 +62,8 @@ Testavimas buvo atliktas su failais:
 # Testavimo rezultatai (v1.1)
 
 ## 5-as tyrimas - struct ir klasės realizacijų palyginimas naudojant skirtingus optimizacijos flag'us
+
+Naudojamas `std::list` konteineris su 2-ąja strategija, kadangi ši realizacija buvo sparčiausia.
 
 ### class
 

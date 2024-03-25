@@ -65,9 +65,9 @@ Testavimas buvo atliktas su failais:
 
 Naudojamas `std::list` konteineris su 2-ąja strategija, kadangi ši realizacija buvo sparčiausia.
 
-### class
+### Be optimizacijos
 
-**Be optimizacijos**
+**class**
 
 | Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
 |------------------------------------------|---------------------|----------------------|
@@ -78,41 +78,7 @@ Naudojamas `std::list` konteineris su 2-ąja strategija, kadangi ši realizacija
 | Patenkinamų stud. įrašymas               | 0.122516            | 0.984268             |
 | Visas laikas (be įvesties)               | 0.883959            | 5.7438               |
 
-**O1**
-
-| Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
-|------------------------------------------|---------------------|----------------------|
-| Duomenų nuskaitymas                      | 0.261686            | 1.51152              |
-| Studentų rūšiavimas į dvi grupes         | 0.0058705           | 0.0562212            |
-| Studentų rikiavimas (pagal galutinį vid.)| 0.029362            | 0.703716             |
-| Nepatenkinamų stud. įrašymas             | 0.0966271           | 0.971214             |
-| Patenkinamų stud. įrašymas               | 0.146837            | 0.990626             |
-| Visas laikas (be įvesties)               | 0.541855            | 4.23447              |
-
-**O2**
-
-| Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
-|------------------------------------------|---------------------|----------------------|
-| Duomenų nuskaitymas                      | 0.276345            | 1.4172               |
-| Studentų rūšiavimas į dvi grupes         | 0.0058666           | 0.0546511            |
-| Studentų rikiavimas (pagal galutinį vid.)| 0.0299275           | 0.725677             |
-| Nepatenkinamų stud. įrašymas             | 0.110903            | 0.798991             |
-| Patenkinamų stud. įrašymas               | 0.143696            | 1.10193              |
-| Visas laikas (be įvesties)               | 0.568065            | 4.09961              |
-**O3**
-
-| Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
-|------------------------------------------|---------------------|----------------------|
-| Duomenų nuskaitymas                      | 0.279151            | 1.41212              |
-| Studentų rūšiavimas į dvi grupes         | 0.005679            | 0.0553183            |
-| Studentų rikiavimas (pagal galutinį vid.)| 0.0269217           | 0.697188             |
-| Nepatenkinamų stud. įrašymas             | 0.0715069           | 0.628212             |
-| Patenkinamų stud. įrašymas               | 0.142035            | 0.868752             |
-| Visas laikas (be įvesties)               | 0.526567            | 3.66291              |
-
-### struct
-
-**Be optimizacijos**
+**struct**
 
 | Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
 |------------------------------------------|---------------------|----------------------|
@@ -123,7 +89,20 @@ Naudojamas `std::list` konteineris su 2-ąja strategija, kadangi ši realizacija
 | Patenkinamų stud. įrašymas               | 0.0703248           | 0.641211             |
 | Visas laikas (be įvesties)               | 0.749497            | 4.74564              |
 
-**O1**
+### O1
+
+**class**
+
+| Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
+|------------------------------------------|---------------------|----------------------|
+| Duomenų nuskaitymas                      | 0.261686            | 1.51152              |
+| Studentų rūšiavimas į dvi grupes         | 0.0058705           | 0.0562212            |
+| Studentų rikiavimas (pagal galutinį vid.)| 0.029362            | 0.703716             |
+| Nepatenkinamų stud. įrašymas             | 0.0966271           | 0.971214             |
+| Patenkinamų stud. įrašymas               | 0.146837            | 0.990626             |
+| Visas laikas (be įvesties)               | 0.541855            | 4.23447              |
+
+**struct**
 
 | Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
 |------------------------------------------|---------------------|----------------------|
@@ -134,7 +113,20 @@ Naudojamas `std::list` konteineris su 2-ąja strategija, kadangi ši realizacija
 | Patenkinamų stud. įrašymas               | 0.0688751           | 0.584924             |
 | Visas laikas (be įvesties)               | 0.46036             | 3.22672              |
 
-**O2**
+### O2
+
+**class**
+
+| Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
+|------------------------------------------|---------------------|----------------------|
+| Duomenų nuskaitymas                      | 0.276345            | 1.4172               |
+| Studentų rūšiavimas į dvi grupes         | 0.0058666           | 0.0546511            |
+| Studentų rikiavimas (pagal galutinį vid.)| 0.0299275           | 0.725677             |
+| Nepatenkinamų stud. įrašymas             | 0.110903            | 0.798991             |
+| Patenkinamų stud. įrašymas               | 0.143696            | 1.10193              |
+| Visas laikas (be įvesties)               | 0.568065            | 4.09961              |
+
+**struct**
 
 | Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
 |------------------------------------------|---------------------|----------------------|
@@ -145,7 +137,21 @@ Naudojamas `std::list` konteineris su 2-ąja strategija, kadangi ši realizacija
 | Patenkinamų stud. įrašymas               | 0.065689            | 0.516838             |
 | Visas laikas (be įvesties)               | 0.431178            | 3.03701              |
 
-**O3**
+
+### O3
+
+**class**
+
+| Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
+|------------------------------------------|---------------------|----------------------|
+| Duomenų nuskaitymas                      | 0.279151            | 1.41212              |
+| Studentų rūšiavimas į dvi grupes         | 0.005679            | 0.0553183            |
+| Studentų rikiavimas (pagal galutinį vid.)| 0.0269217           | 0.697188             |
+| Nepatenkinamų stud. įrašymas             | 0.0715069           | 0.628212             |
+| Patenkinamų stud. įrašymas               | 0.142035            | 0.868752             |
+| Visas laikas (be įvesties)               | 0.526567            | 3.66291              |
+
+**struct**
 
 | Veiksmas                                 | studentai100000.txt | studentai1000000.txt |
 |------------------------------------------|---------------------|----------------------|

@@ -56,27 +56,27 @@ void Studentas::irasytiStudentuDuomenis(const std::string& failoPavadinimas, con
     }
 }
 
-void rikiuotiStudentus(std::vector<Studentas>& studentai, int rikiavimoPasirinkimas) {
+void Studentas::rikiuotiStudentus(std::vector<Studentas>& studentai, int rikiavimoPasirinkimas) {
     switch (rikiavimoPasirinkimas) {
         case 1:
             std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.vardas_ < b.vardas_; });
+                return a.getVardas() < b.getVardas(); });
             break;
         case 2:
             std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.pavarde_ < b.pavarde_; });
+                return a.getPavarde() < b.getPavarde(); });
             break;
         case 3:
             std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.galutinisVid_ > b.galutinisVid_; });
+                return a.getGalutinisVid() > b.getGalutinisVid(); });
             break;
         case 4:
             std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.galutinisMed_ > b.galutinisMed_; });
+                return a.getGalutinisMed() > b.getGalutinisMed(); });
             break;
         default:
             std::cout << "Netinkamas pasirinkimas, naudojamas numatytasis (Vardas).\n";
             std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-                return a.vardas_ > b.vardas_; });
+                return a.getVardas() > b.getVardas(); });
     }
 }

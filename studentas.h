@@ -58,7 +58,7 @@ public:
 
     //klasės funkcijos
     static void irasytiStudentuDuomenis(const std::string& failoPavadinimas, const std::vector<Studentas>& studentai);
-    friend void rikiuotiStudentus(std::vector<Studentas>& studentai, int rikiavimoPasirinkimas);
+    static void rikiuotiStudentus(std::vector<Studentas>& studentai, int rikiavimoPasirinkimas);
 };
 
 #endif

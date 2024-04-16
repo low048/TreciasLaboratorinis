@@ -174,7 +174,7 @@ int main() {
                         break;
                     }
                     case 2: {
-                        rikiuotiStudentus(studentai, 3);
+                        Studentas::rikiuotiStudentus(studentai, 3);
                         if (!studentai.empty()) {
                             for (auto it = studentai.end(); it != studentai.begin();) {
                                 --it;
@@ -206,8 +206,8 @@ int main() {
                     std::cout << "Rikiuoti studentus pagal:\n1 - Vardą\n2 - Pavardę\n3 - Galutinį (Vid.)\n4 - Galutinį (Med.)\nPasirinkimas: ";
                     int rikiavimoPasirinkimas = patikrintiSkaiciu(1, 4);
                     Timer t2;
-                    rikiuotiStudentus(nepatenkinami, rikiavimoPasirinkimas);
-                    rikiuotiStudentus(studentai, rikiavimoPasirinkimas);
+                    Studentas::rikiuotiStudentus(nepatenkinami, rikiavimoPasirinkimas);
+                    Studentas::rikiuotiStudentus(studentai, rikiavimoPasirinkimas);
                     std::cout << "Rikiavimas užtruko " << t2.elapsed() << " s\n";
                     timeSum += t2.elapsed();
                 }
@@ -236,7 +236,7 @@ int main() {
                     std::cout << "Rikiuoti studentus pagal:\n1 - Vardą\n2 - Pavardę\n3 - Galutinį (Vid.)\n4 - Galutinį (Med.)\nPasirinkimas: ";
                     int rikiavimoPasirinkimas = patikrintiSkaiciu(1, 4);
                     Timer t;
-                    rikiuotiStudentus(studentai, rikiavimoPasirinkimas);
+                    Studentas::rikiuotiStudentus(studentai, rikiavimoPasirinkimas);
                     std::cout << "Rikiavimas užtruko " << t.elapsed() << " s\n";
                     timeSum += t.elapsed();
                 }

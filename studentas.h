@@ -30,7 +30,9 @@ public:
     Studentas(std::istream& is);
 
     //destruktorius
-    ~Studentas() {}
+    ~Studentas() {
+        namuDarbai_.clear();
+    }
 
     //getteriai
     std::string getVardas() const { return vardas_; }
@@ -56,7 +58,7 @@ public:
 
     //klasės funkcijos
     static void irasytiStudentuDuomenis(const std::string& failoPavadinimas, const std::vector<Studentas>& studentai);
-    static void rikiuotiStudentus(std::vector<Studentas>& studentai, int rikiavimoPasirinkimas);
+    friend void rikiuotiStudentus(std::vector<Studentas>& studentai, int rikiavimoPasirinkimas);
 };
 
 #endif

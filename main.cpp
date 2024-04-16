@@ -1,9 +1,9 @@
 #include "studentas.h"
-#include "../include/funkcijos.h"
-#include "../include/timer.h"
+#include "funkcijos.h"
+#include "timer.h"
 
 int main() {
-    std::list<Studentas> studentai;
+    std::vector<Studentas> studentai;
     int meniuPasirinkimas = 0;
     double timeSum;
     do {
@@ -159,10 +159,10 @@ int main() {
                 std::cout << "Pasirinkite strategiją:\n1 - Pirmoji strategija\n2 - Antroji strategija\n3 - Trečioji strategija\nPasirinkimas: ";
                 int strategija = patikrintiSkaiciu(1, 3);
                 Timer t;
-                std::list<Studentas> nepatenkinami;
+                std::vector<Studentas> nepatenkinami;
                 switch (strategija) {
                     case 1: {
-                        std::list<Studentas> patenkinami;
+                        std::vector<Studentas> patenkinami;
                         for (const auto& studentas : studentai) {
                             if (studentas.getGalutinisVid() < 5) {
                                 nepatenkinami.push_back(studentas);
@@ -174,12 +174,14 @@ int main() {
                         break;
                     }
                     case 2: {
-                        for (auto it = studentai.begin(); it != studentai.end();) {
-                            if (it->getGalutinisVid() < 5) {
-                                nepatenkinami.push_back(std::move(*it));
-                                it = studentai.erase(it);
-                            } else {
-                                it++;
+                        rikiuotiStudentus(studentai, 3);
+                        if (!studentai.empty()) {
+                            for (auto it = studentai.end(); it != studentai.begin();) {
+                                --it;
+                                if (it->getGalutinisVid() < 5) {
+                                    nepatenkinami.push_back(std::move(*it));
+                                    it = studentai.erase(it);
+                                }
                             }
                         }
                         break;
@@ -204,8 +206,8 @@ int main() {
                     std::cout << "Rikiuoti studentus pagal:\n1 - Vardą\n2 - Pavardę\n3 - Galutinį (Vid.)\n4 - Galutinį (Med.)\nPasirinkimas: ";
                     int rikiavimoPasirinkimas = patikrintiSkaiciu(1, 4);
                     Timer t2;
-                    Studentas::rikiuotiStudentus(nepatenkinami, rikiavimoPasirinkimas);
-                    Studentas::rikiuotiStudentus(studentai, rikiavimoPasirinkimas);
+                    rikiuotiStudentus(nepatenkinami, rikiavimoPasirinkimas);
+                    rikiuotiStudentus(studentai, rikiavimoPasirinkimas);
                     std::cout << "Rikiavimas užtruko " << t2.elapsed() << " s\n";
                     timeSum += t2.elapsed();
                 }
@@ -234,7 +236,7 @@ int main() {
                     std::cout << "Rikiuoti studentus pagal:\n1 - Vardą\n2 - Pavardę\n3 - Galutinį (Vid.)\n4 - Galutinį (Med.)\nPasirinkimas: ";
                     int rikiavimoPasirinkimas = patikrintiSkaiciu(1, 4);
                     Timer t;
-                    Studentas::rikiuotiStudentus(studentai, rikiavimoPasirinkimas);
+                    rikiuotiStudentus(studentai, rikiavimoPasirinkimas);
                     std::cout << "Rikiavimas užtruko " << t.elapsed() << " s\n";
                     timeSum += t.elapsed();
                 }

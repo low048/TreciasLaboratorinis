@@ -14,6 +14,10 @@ public:
     Zmogus() : vardas_{""}, pavarde_{""} {}
 
     virtual ~Zmogus() {}
+    
+    //getteriai
+    std::string getVardas() const { return vardas_; }
+    std::string getPavarde() const { return pavarde_; }
 
     //visiskai virtuali funkcija
     virtual void atspausdintiInformacija() const = 0;

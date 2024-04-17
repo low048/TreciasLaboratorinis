@@ -17,7 +17,7 @@ void Studentas::apskaiciuotiGalutini() {
     }
 }
 
-Studentas::Studentas(std::istream& is) {
+Studentas::Studentas(std::istream& is) : Zmogus{} {
     nuskaitytiStudenta(is);
 }
 

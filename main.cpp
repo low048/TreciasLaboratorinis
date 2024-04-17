@@ -20,7 +20,7 @@ int main() {
             << "7 - v1.2 metodų testavimas\n"
             << "8 - Baigti darbą\n"
             << "Pasirinkimas: ";
-        meniuPasirinkimas = patikrintiSkaiciu(1, 7);
+        meniuPasirinkimas = patikrintiSkaiciu(1, 8);
         switch(meniuPasirinkimas) {
             case 1: {
                 //duomenys įvedami ranka

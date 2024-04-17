@@ -29,6 +29,10 @@ public:
     Studentas() : vardas_{""}, pavarde_{""}, sum_{0}, egz_{0}, galutinisVid_{0.0}, galutinisMed_{0.0} {}
     Studentas(std::istream& is);
 
+    //kopijavimo konstruktorius
+    Studentas(const Studentas& other)
+        : vardas_(other.vardas_), pavarde_(other.pavarde_), namuDarbai_(other.namuDarbai_), sum_(other.sum_), egz_(other.egz_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
+
     //destruktorius
     ~Studentas() {
         namuDarbai_.clear();

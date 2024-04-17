@@ -23,7 +23,7 @@ private:
 public:
     //konstruktoriai
     Studentas(const std::string& vardas, const std::string& pavarde, int egz, const std::vector<int>& namuDarbai, int sum)
-        : vardas_(vardas), pavarde_(pavarde), egz_(egz), namuDarbai_(namuDarbai), sum_(sum) {
+        : vardas_{vardas}, pavarde_{pavarde}, egz_{egz}, namuDarbai_{namuDarbai}, sum_{sum} {
         apskaiciuotiGalutini();
     }
     Studentas() : vardas_{""}, pavarde_{""}, sum_{0}, egz_{0}, galutinisVid_{0.0}, galutinisMed_{0.0} {}
@@ -31,11 +31,25 @@ public:
 
     //kopijavimo konstruktorius
     Studentas(const Studentas& other)
-        : vardas_(other.vardas_), pavarde_(other.pavarde_), namuDarbai_(other.namuDarbai_), sum_(other.sum_), egz_(other.egz_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
+        : vardas_{other.vardas_}, pavarde_{other.pavarde_}, namuDarbai_{other.namuDarbai_}, sum_{other.sum_}, egz_{other.egz_}, galutinisVid_{other.galutinisVid_}, galutinisMed_{other.galutinisMed_} {}
 
     //perkėlimo konstruktorius
     Studentas(Studentas&& other) noexcept
-        : vardas_(std::move(other.vardas_)), pavarde_(std::move(other.pavarde_)), namuDarbai_(std::move(other.namuDarbai_)), sum_(other.sum_), egz_(other.egz_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
+        : vardas_{std::move(other.vardas_)}, pavarde_{std::move(other.pavarde_)}, namuDarbai_{std::move(other.namuDarbai_)}, sum_{other.sum_}, egz_{other.egz_}, galutinisVid_{other.galutinisVid_}, galutinisMed_{other.galutinisMed_} {}
+    
+    //kopijavimo priskyrimo operatorius
+    Studentas& operator=(const Studentas& other) {
+        if (this != &other) {
+            vardas_ = other.vardas_;
+            pavarde_ = other.pavarde_;
+            namuDarbai_ = other.namuDarbai_;
+            sum_ = other.sum_;
+            egz_ = other.egz_;
+            galutinisVid_ = other.galutinisVid_;
+            galutinisMed_ = other.galutinisMed_;
+        }
+        return *this;
+    }
 
     //destruktorius
     ~Studentas() {

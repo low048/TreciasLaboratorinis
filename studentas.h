@@ -51,6 +51,20 @@ public:
         return *this;
     }
 
+    //perkėlimo priskyrimo operatorius
+    Studentas& operator=(Studentas&& other) noexcept {
+        if (this != &other) {
+            vardas_ = std::move(other.vardas_);
+            pavarde_ = std::move(other.pavarde_);
+            namuDarbai_ = std::move(other.namuDarbai_);
+            sum_ = other.sum_;
+            egz_ = other.egz_;
+            galutinisVid_ = other.galutinisVid_;
+            galutinisMed_ = other.galutinisMed_;
+        }
+        return *this;
+    }
+
     //destruktorius
     ~Studentas() {
         namuDarbai_.clear();

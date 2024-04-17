@@ -19,6 +19,10 @@ public:
     std::string getVardas() const { return vardas_; }
     std::string getPavarde() const { return pavarde_; }
 
+    //setteriai
+    void setVardas(const std::string& v) { vardas_ = v; }
+    void setPavarde(const std::string& p) { pavarde_ = p; }
+
     //visiskai virtuali funkcija
     virtual void atspausdintiInformacija() const = 0;
 };

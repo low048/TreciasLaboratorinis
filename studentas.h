@@ -9,11 +9,10 @@
 #include <stdexcept>
 #include <iostream>
 #include <iomanip>
+#include "zmogus.h"
 
-class Studentas {
+class Studentas : public Zmogus {
 private:
-    std::string vardas_;
-    std::string pavarde_;
     std::vector<int> namuDarbai_;
     int sum_ = 0; //namų darbų rezultatų suma
     int egz_ = 0; //egzamino rezultatas
@@ -23,20 +22,20 @@ private:
 public:
     //konstruktoriai
     Studentas(const std::string& vardas, const std::string& pavarde, int egz, const std::vector<int>& namuDarbai, int sum)
-        : vardas_{vardas}, pavarde_{pavarde}, egz_{egz}, namuDarbai_{namuDarbai}, sum_{sum} {
+        : Zmogus{vardas, pavarde}, egz_{egz}, namuDarbai_{namuDarbai}, sum_{sum} {
         apskaiciuotiGalutini();
     }
-    Studentas() : vardas_{""}, pavarde_{""}, sum_{0}, egz_{0}, galutinisVid_{0.0}, galutinisMed_{0.0} {}
+    Studentas() : Zmogus{}, sum_{0}, egz_{0}, galutinisVid_{0.0}, galutinisMed_{0.0} {}
     Studentas(std::istream& is);
 
     //kopijavimo konstruktorius
     Studentas(const Studentas& other)
-        : vardas_{other.vardas_}, pavarde_{other.pavarde_}, namuDarbai_{other.namuDarbai_}, sum_{other.sum_}, egz_{other.egz_}, galutinisVid_{other.galutinisVid_}, galutinisMed_{other.galutinisMed_} {}
+        : Zmogus{other}, namuDarbai_{other.namuDarbai_}, sum_{other.sum_}, egz_{other.egz_}, galutinisVid_{other.galutinisVid_}, galutinisMed_{other.galutinisMed_} {}
 
     //perkėlimo konstruktorius
     Studentas(Studentas&& other) noexcept
-        : vardas_{std::move(other.vardas_)}, pavarde_{std::move(other.pavarde_)}, namuDarbai_{std::move(other.namuDarbai_)}, sum_{other.sum_}, egz_{other.egz_}, galutinisVid_{other.galutinisVid_}, galutinisMed_{other.galutinisMed_} {}
-    
+        : Zmogus{std::move(other)}, namuDarbai_{std::move(other.namuDarbai_)}, sum_{other.sum_}, egz_{other.egz_}, galutinisVid_{other.galutinisVid_}, galutinisMed_{other.galutinisMed_} {}
+
     //kopijavimo priskyrimo operatorius
     Studentas& operator=(const Studentas& other) {
         if (this != &other) {
@@ -82,8 +81,6 @@ public:
     }
 
     //getteriai
-    std::string getVardas() const { return vardas_; }
-    std::string getPavarde() const { return pavarde_; }
     std::vector<int> getNamuDarbai() const { return namuDarbai_; }
     int getSum() const { return sum_; }
     int getEgz() const { return egz_; }
@@ -91,8 +88,6 @@ public:
     float getGalutinisMed() const { return galutinisMed_; }
 
     //setteriai
-    void setVardas(const std::string& v) { vardas_ = v; }
-    void setPavarde(const std::string& p) { pavarde_ = p; }
     void setNamuDarbai(const std::vector<int>& nd) { namuDarbai_ = nd; }
     void setSum(int s) { sum_ = s; }
     void setEgz(int e) { egz_ = e; }
@@ -102,6 +97,9 @@ public:
     //nario funckijos
     void apskaiciuotiGalutini();
     std::istream& nuskaitytiStudenta(std::istream&);
+    void atspausdintiInformacija() const override {
+        std::cout << "Vardas: " << vardas_ << ", Pavarde: " << pavarde_ << std::endl;
+    }
 
     //klasės funkcijos
     static void irasytiStudentuDuomenis(const std::string& failoPavadinimas, const std::vector<Studentas>& studentai);

@@ -175,6 +175,15 @@ int main() {
                         break;
                     }
                     case 2: {
+                        /*efektyvesne versija
+                        Studentas::rikiuotiStudentus(studentai, 3);
+                        if (!studentai.empty()) {
+                            while (!studentai.empty() && studentai.back().getGalutinisVid() < 5) {
+                                nepatenkinami.push_back(std::move(studentai.back()));
+                                studentai.pop_back();
+                            }
+                        }
+                        break;*/
                         Studentas::rikiuotiStudentus(studentai, 3);
                         if (!studentai.empty()) {
                             for (auto it = studentai.end(); it != studentai.begin();) {

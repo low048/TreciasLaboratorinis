@@ -34,7 +34,12 @@ public:
 
     //perkėlimo konstruktorius
     Studentas(Studentas&& other) noexcept
-        : Zmogus{std::move(other)}, namuDarbai_{std::move(other.namuDarbai_)}, sum_{other.sum_}, egz_{other.egz_}, galutinisVid_{other.galutinisVid_}, galutinisMed_{other.galutinisMed_} {}
+        : Zmogus{std::move(other)}, namuDarbai_{std::move(other.namuDarbai_)}, sum_{other.sum_}, egz_{other.egz_}, galutinisVid_{other.galutinisVid_}, galutinisMed_{other.galutinisMed_} {
+            other.sum_ = 0;
+            other.egz_ = 0;
+            other.galutinisVid_ = 0.0;
+            other.galutinisMed_ = 0.0;
+        }
 
     //kopijavimo priskyrimo operatorius
     Studentas& operator=(const Studentas& other) {
@@ -60,6 +65,10 @@ public:
             egz_ = other.egz_;
             galutinisVid_ = other.galutinisVid_;
             galutinisMed_ = other.galutinisMed_;
+            other.sum_ = 0;
+            other.egz_ = 0;
+            other.galutinisVid_ = 0.0;
+            other.galutinisMed_ = 0.0;
         }
         return *this;
     }

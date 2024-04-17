@@ -13,6 +13,15 @@ public:
     Zmogus(const std::string& vardas, const std::string& pavarde) : vardas_{vardas}, pavarde_{pavarde} {}
     Zmogus() : vardas_{""}, pavarde_{""} {}
 
+    //kopijavimo konstruktorius
+    Zmogus(const Zmogus& other) : vardas_{other.vardas_}, pavarde_{other.pavarde_} {}
+
+    //perkėlimo konstruktorius
+    Zmogus(Zmogus&& other) noexcept : vardas_{std::move(other.vardas_)}, pavarde_{std::move(other.pavarde_)} {
+        other.vardas_ = "";
+        other.pavarde_ = "";
+    }
+
     virtual ~Zmogus() {}
     
     //getteriai

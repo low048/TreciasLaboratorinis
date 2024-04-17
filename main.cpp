@@ -251,13 +251,13 @@ int main() {
                 //patikrinamas perkėlimo konstruktorius bei išvedimo operatorius
                 Studentas s4(std::move(s1));
                 std::cout << "s1 perkeltas į s4: " << s4 << '\n';
-                std::cout << "s1 po perkėlimo: " << s1 << " (turėtų būti tuščias apart galutinių pažymių)\n";
+                std::cout << "s1 po perkėlimo: " << s1 << " (turėtų būti tuščias)\n";
 
                 //patikrinamas perkėlimo priskyrimo operatorius bei išvedimo operatorius
                 Studentas s5;
                 s5 = std::move(s2);
                 std::cout << "s2 perkeltas į s5: " << s5 << '\n';
-                std::cout << "s2 po perkėlimo: " << s2 << " (turėtų būti tuščias apart galutinių pažymių)\n";
+                std::cout << "s2 po perkėlimo: " << s2 << " (turėtų būti tuščias)\n";
 
                 //patikrinamas įvesties operatorius
                 std::istringstream iss("Petras Petraitis 8 7 8 9 8");

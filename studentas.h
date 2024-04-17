@@ -70,6 +70,11 @@ public:
         namuDarbai_.clear();
     }
 
+    //įvesties operatorius
+    friend std::istream& operator>>(std::istream& is, Studentas& studentas) {
+        return studentas.nuskaitytiStudenta(is);
+    }
+
     //getteriai
     std::string getVardas() const { return vardas_; }
     std::string getPavarde() const { return pavarde_; }

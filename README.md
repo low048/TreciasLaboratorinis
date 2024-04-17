@@ -56,7 +56,22 @@ Testavimas buvo atliktas su failais:
 - `studentai1000000.txt` - 1 mil. stud., 7 n.d., 124,024 KB (iš anksto generuotas, patalpintas VMA)
 - `studentai_10000000.txt` - 10 mil. stud., 15 n.d., 1,962,891 KB (iš savos atsitiktinių studentų failo generavimo funkcijos)
 
-# Testavimo rezultatai (v1.1)
+# Testavimo rezultatai (v1.2)
+
+## Rule of five
+
+- Kopijavimo konstruktorius sukuria naują `Studentas` objektą, kuris yra kopija esamo `Studentas` objekto. Pavyzdžiui, `Studentas s2(s1)`; sukurs `Studentas` objektą `s2`, kuris yra kopija `s1`.
+- Perkėlimo konstruktorius sukuria naują `Studentas` objektą, perkeliant duomenis iš esamo `Studentas` objekto, naudojant `std::move`. Pavyzdžiui, `Studentas s4(std::move(s1));` sukurs `Studentas` objektą `s4`, perkeliant duomenis iš `s1`.
+- Kopijavimo priskyrimo operatorius priskiria esamam `Studenta`s objektui kopiją kito Studentas objekto. Pavyzdžiui, `s3 = s1;` priskirs `s3` kopiją `s1`.
+- Perkėlimo priskyrimo operatorius priskiria esamam `Studentas` objektui išteklius iš kito `Studentas` objekto, naudojant `std::move`. Pavyzdžiui, `s5 = std::move(s2);` priskirs `s5` išteklius iš `s2`.
+- Destruktorius valo `Studentas` objekto duomenis, kai objektas yra sunaikinamas. Pavyzdžiui, `~Studentas() { namuDarbai_.clear(); }` išvalys `namuDarbai_` vektorių, kai `Studentas` objektas bus sunaikintas.
+
+## Perdengti įvesties/išvesties operatoriai
+
+- Įvesties operatorius leidžia nuskaityti `Studentas` objekto duomenis iš srauto. Pavyzdžiui, `iss >> s6;` nuskaitys `Studentas` objekto duomenis iš `iss` srauto ir įrašys juos į `s6`. Formatas - `vardas pavarde nd1 nd2 ... ndj egz`.
+- Išvesties operatorius leidžia išvesti `Studentas` objekto duomenis į srautą. Pavyzdžiui, `std::cout << s1`; išves `s1` objekto duomenis į konsolę. Formatas - `vardas pavarde galutinisVid galutinisMed`.
+
+# Testavimo rezultatai (SENA VERSIJA - v1.1)
 
 ## 5-as tyrimas - struct ir klasės realizacijų palyginimas naudojant skirtingus optimizacijos flag'us
 

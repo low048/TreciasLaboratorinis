@@ -75,6 +75,12 @@ public:
         return studentas.nuskaitytiStudenta(is);
     }
 
+    //išvesties operatorius
+    friend std::ostream& operator<<(std::ostream& os, const Studentas& studentas) {
+        os << studentas.vardas_ << " " << studentas.pavarde_ << " " << studentas.galutinisVid_ << " " << studentas.galutinisMed_;
+        return os;
+    }
+
     //getteriai
     std::string getVardas() const { return vardas_; }
     std::string getPavarde() const { return pavarde_; }

@@ -33,6 +33,10 @@ public:
     Studentas(const Studentas& other)
         : vardas_(other.vardas_), pavarde_(other.pavarde_), namuDarbai_(other.namuDarbai_), sum_(other.sum_), egz_(other.egz_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
 
+    //perkėlimo konstruktorius
+    Studentas(Studentas&& other) noexcept
+        : vardas_(std::move(other.vardas_)), pavarde_(std::move(other.pavarde_)), namuDarbai_(std::move(other.namuDarbai_)), sum_(other.sum_), egz_(other.egz_), galutinisVid_(other.galutinisVid_), galutinisMed_(other.galutinisMed_) {}
+
     //destruktorius
     ~Studentas() {
         namuDarbai_.clear();

@@ -56,7 +56,11 @@ Testavimas buvo atliktas su failais:
 - `studentai1000000.txt` - 1 mil. stud., 7 n.d., 124,024 KB (iš anksto generuotas, patalpintas VMA)
 - `studentai_10000000.txt` - 10 mil. stud., 15 n.d., 1,962,891 KB (iš savos atsitiktinių studentų failo generavimo funkcijos)
 
-# Testavimo rezultatai (v1.2)
+# Pakeitimai (v1.5)
+
+Vietoje vienos klasės `Studentas` sukurtos dvi: bazinė (abstrakti, negalima kurti jos objektų) klasė `Zmogus`, skirta bendrai aprašyti žmogų, ir iš jos išvestinė (derived) klasė - `Studentas`.
+
+# Pakeitimai (SENA VERSIJA - v1.2)
 
 ## Rule of five
 

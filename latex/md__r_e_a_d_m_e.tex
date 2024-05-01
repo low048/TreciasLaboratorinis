@@ -1,0 +1,458 @@
+\chapter{README}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{README@{README}}
+
+
+{\bfseries{Įdiegimo bei naudojimo instrukcija}}\begin{adjustwidth}{1em}{0em}
+~\newline
+
+
+\end{adjustwidth}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md0}{}\doxysubsection{\texorpdfstring{Projekto persikėlimas į savo kompiuterį}{Projekto persikėlimas į savo kompiuterį}}\label{md__r_e_a_d_m_e_autotoc_md0}
+
+\begin{DoxyItemize}
+\item Instaliuokite Git\+Hub Desktop.
+\item Atsidarykite projekto \href{https://github.com/low048/PirmasLaboratorinis}{\texttt{ repozitorijos puslapį}}.
+\item Paspauskite Code mygtuką ir pasirinkite Open with Git\+Hub Desktop.
+\item Pasirinkite, kur norite išsaugoti projekto kopiją.
+\item Paspauskite Clone.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysubsection{\texorpdfstring{Kompiliatorius}{Kompiliatorius}}\label{md__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Parsisiųskite \href{https://www.cygwin.com/setup-x86_64.exe}{\texttt{ Cygwin}}.
+\item Instaliuokite Cygwin nepasirinkdami jokių pakuočių (packages), bet neištrinkite {\ttfamily setup-\/x86\+\_\+64.\+exe}.
+\item Atidarykite cmd, ir įvykdykite šias komandas\+:
+\begin{DoxyItemize}
+\item {\ttfamily cd C\+:\textbackslash{}failo\textbackslash{}vieta\textbackslash{}kompiuteryje} (pvz. "{}cd C\+:\textbackslash{}\+Users\textbackslash{}\+User\textbackslash{}\+Downloads"{}, kuriame yra setup-\/x86\+\_\+64.\+exe).
+\item {\ttfamily setup-\/x86\+\_\+64.\+exe -\/q -\/P wget -\/P gcc-\/g++ -\/P make -\/P diffutils -\/P libmpfr-\/devel -\/P libgmp-\/devel -\/P libmpc-\/devel}
+\end{DoxyItemize}
+\item Palaukite kol užsidarys naujai atidarytas langas, tada bus įdiegtos visos reikiamos pakuotės programos paleidimui.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysubsection{\texorpdfstring{Projekto kompiliavimas}{Projekto kompiliavimas}}\label{md__r_e_a_d_m_e_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Atsidarykite {\ttfamily Cygwin64 Terminal}, tada jame įveskite\+:
+\begin{DoxyItemize}
+\item {\ttfamily cd "{}\+C\+:\textbackslash{}projekto\textbackslash{}vieta\textbackslash{}kompiuteryje"{}} (pvz. "{}cd C\+:\textbackslash{}\+Users\textbackslash{}\+User\textbackslash{}\+Desktop\textbackslash{}\+Pirmas\+Laboratorinis"{}, kuriame yra projekto kopija). ~\newline
+Galimų tolesnių komandų sąrašas\+:
+\item {\ttfamily make program} arba {\ttfamily make all} -\/ jei norite kompiliuoti programą
+\item {\ttfamily make clean}-\/ jei norite ištrinti visas kompiliuotas versijas
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{\texorpdfstring{Programos naudojimas}{Programos naudojimas}}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Atsidarykite naujai sukompiliuotą programos versiją(-\/as).
+\item Sekite instrukcijas, kurios rodomos konsolės langelyje.
+\end{DoxyItemize}
+
+Programos paleidimo pavyzdys\+: 
+
+
+
+{\bfseries{Testavimas}}\begin{adjustwidth}{1em}{0em}
+~\newline
+
+
+Kompiuterio parametrai\+:
+\begin{DoxyItemize}
+\item Ryzen 5 6600HS
+\item NVME SSD
+\item 16 GB LPDDR5 6400 MHz RAM
+\end{DoxyItemize}
+
+Kiekvieno programos paleidimo tyrimų metu nuotraukas galite matyti \href{https://github.com/low048/PirmasLaboratorinis/tree/V1.0/TyrimuNuotraukos/}{\texttt{ čia}}.
+
+Testavimas buvo atliktas su failais\+:
+\begin{DoxyItemize}
+\item {\ttfamily studentai\+\_\+1000.\+txt} -\/ 1k stud., 15 n.\+d., 197 KB (iš savos atsitiktinių studentų failo generavimo funkcijos)
+\item {\ttfamily studentai10000.\+txt} -\/ 10k stud., 15 n.\+d., 2,022 KB (iš anksto generuotas, patalpintas VMA)
+\item {\ttfamily studentai100000.\+txt} -\/ 100k stud., 20 n.\+d., 25,098 KB (iš anksto generuotas, patalpintas VMA)
+\item {\ttfamily studentai1000000.\+txt} -\/ 1 mil. stud., 7 n.\+d., 124,024 KB (iš anksto generuotas, patalpintas VMA)
+\item {\ttfamily studentai\+\_\+10000000.\+txt} -\/ 10 mil. stud., 15 n.\+d., 1,962,891 KB (iš savos atsitiktinių studentų failo generavimo funkcijos)
+\end{DoxyItemize}
+
+\end{adjustwidth}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysection{\texorpdfstring{Pakeitimai (v1.\+5)}{Pakeitimai (v1.\+5)}}\label{md__r_e_a_d_m_e_autotoc_md4}
+Vietoje vienos klasės {\ttfamily \doxylink{class_studentas}{Studentas}} sukurtos dvi\+: bazinė (abstrakti, negalima kurti jos objektų) klasė {\ttfamily \doxylink{class_zmogus}{Zmogus}}, skirta bendrai aprašyti žmogų, ir iš jos išvestinė (derived) klasė -\/ {\ttfamily \doxylink{class_studentas}{Studentas}}.\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{\texorpdfstring{Pakeitimai (SENA VERSIJA -\/ v1.\+2)}{Pakeitimai (SENA VERSIJA -\/ v1.\+2)}}\label{md__r_e_a_d_m_e_autotoc_md5}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{\texorpdfstring{Rule of five}{Rule of five}}\label{md__r_e_a_d_m_e_autotoc_md6}
+
+\begin{DoxyItemize}
+\item Kopijavimo konstruktorius sukuria naują {\ttfamily \doxylink{class_studentas}{Studentas}} objektą, kuris yra kopija esamo {\ttfamily \doxylink{class_studentas}{Studentas}} objekto. Pavyzdžiui, {\ttfamily \doxylink{class_studentas}{Studentas} s2(s1)}; sukurs {\ttfamily \doxylink{class_studentas}{Studentas}} objektą {\ttfamily s2}, kuris yra kopija {\ttfamily s1}.
+\item Perkėlimo konstruktorius sukuria naują {\ttfamily \doxylink{class_studentas}{Studentas}} objektą, perkeliant duomenis iš esamo {\ttfamily \doxylink{class_studentas}{Studentas}} objekto, naudojant {\ttfamily std\+::move}. Pavyzdžiui, {\ttfamily \doxylink{class_studentas}{Studentas} s4(std\+::move(s1));} sukurs {\ttfamily \doxylink{class_studentas}{Studentas}} objektą {\ttfamily s4}, perkeliant duomenis iš {\ttfamily s1}.
+\item Kopijavimo priskyrimo operatorius priskiria esamam {\ttfamily Studenta}s objektui kopiją kito \doxylink{class_studentas}{Studentas} objekto. Pavyzdžiui, {\ttfamily s3 = s1;} priskirs {\ttfamily s3} kopiją {\ttfamily s1}.
+\item Perkėlimo priskyrimo operatorius priskiria esamam {\ttfamily \doxylink{class_studentas}{Studentas}} objektui išteklius iš kito {\ttfamily \doxylink{class_studentas}{Studentas}} objekto, naudojant {\ttfamily std\+::move}. Pavyzdžiui, {\ttfamily s5 = std\+::move(s2);} priskirs {\ttfamily s5} išteklius iš {\ttfamily s2}.
+\item Destruktorius valo {\ttfamily \doxylink{class_studentas}{Studentas}} objekto duomenis, kai objektas yra sunaikinamas. Pavyzdžiui, {\ttfamily \texorpdfstring{$\sim$}{\string~}\+Studentas() \{ namu\+Darbai\+\_\+.\+clear(); \}} išvalys {\ttfamily namu\+Darbai\+\_\+} vektorių, kai {\ttfamily \doxylink{class_studentas}{Studentas}} objektas bus sunaikintas.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsection{\texorpdfstring{Perdengti įvesties/išvesties operatoriai}{Perdengti įvesties/išvesties operatoriai}}\label{md__r_e_a_d_m_e_autotoc_md7}
+
+\begin{DoxyItemize}
+\item Įvesties operatorius leidžia nuskaityti {\ttfamily \doxylink{class_studentas}{Studentas}} objekto duomenis iš srauto. Pavyzdžiui, {\ttfamily iss \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} s6;} nuskaitys {\ttfamily \doxylink{class_studentas}{Studentas}} objekto duomenis iš {\ttfamily iss} srauto ir įrašys juos į {\ttfamily s6}. Formatas -\/ {\ttfamily vardas pavarde nd1 nd2 ... ndj egz}.
+\item Išvesties operatorius leidžia išvesti {\ttfamily \doxylink{class_studentas}{Studentas}} objekto duomenis į srautą. Pavyzdžiui, {\ttfamily std\+::cout \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} s1}; išves {\ttfamily s1} objekto duomenis į konsolę. Formatas -\/ {\ttfamily vardas pavarde galutinis\+Vid galutinis\+Med}.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysection{\texorpdfstring{Testavimo rezultatai (SENA VERSIJA -\/ v1.\+1)}{Testavimo rezultatai (SENA VERSIJA -\/ v1.\+1)}}\label{md__r_e_a_d_m_e_autotoc_md8}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsection{\texorpdfstring{5-\/as tyrimas -\/ struct ir klasės realizacijų palyginimas naudojant skirtingus optimizacijos flag\textquotesingle{}us}{5-\/as tyrimas -\/ struct ir klasės realizacijų palyginimas naudojant skirtingus optimizacijos flag\textquotesingle{}us}}\label{md__r_e_a_d_m_e_autotoc_md9}
+Naudojamas {\ttfamily std\+::vector} konteineris su 3-\/ąja strategija, kadangi ši realizacija buvo sparčiausia.\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Be optimizacijos}{Be optimizacijos}}\label{md__r_e_a_d_m_e_autotoc_md10}
+{\bfseries{class}}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endhead
+Duomenų nuskaitymas   &0.\+55441   &2.\+99869    \\\cline{1-3}
+Studentų rūšiavimas į dvi grupes   &0.\+0294032   &0.\+324522    \\\cline{1-3}
+Studentų rikiavimas (pagal galutinį vid.)   &0.\+268387   &3.\+62094    \\\cline{1-3}
+Nepatenkinamų stud. įrašymas   &0.\+0594664   &0.\+834831    \\\cline{1-3}
+Patenkinamų stud. įrašymas   &0.\+146798   &1.\+14285    \\\cline{1-3}
+Visas laikas (be įvesties)   &1.\+05953   &8.\+9231   \\\cline{1-3}
+\end{longtabu}
+
+
+{\bfseries{struct}}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endhead
+Duomenų nuskaitymas   &0.\+567829   &2.\+82114    \\\cline{1-3}
+Studentų rūšiavimas į dvi grupes   &0.\+0165831   &0.\+132552    \\\cline{1-3}
+Studentų rikiavimas (pagal galutinį vid.)   &0.\+190172   &2.\+19651    \\\cline{1-3}
+Nepatenkinamų stud. įrašymas   &0.\+0476958   &0.\+41684    \\\cline{1-3}
+Patenkinamų stud. įrašymas   &0.\+061474   &0.\+589398    \\\cline{1-3}
+Visas laikas (be įvesties)   &0.\+884936   &6.\+15744   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsubsection{\texorpdfstring{O1}{O1}}\label{md__r_e_a_d_m_e_autotoc_md11}
+{\bfseries{class}}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endhead
+Duomenų nuskaitymas   &0.\+290447   &1.\+60373    \\\cline{1-3}
+Studentų rūšiavimas į dvi grupes   &0.\+011564   &0.\+155452    \\\cline{1-3}
+Studentų rikiavimas (pagal galutinį vid.)   &0.\+0767983   &1.\+11478    \\\cline{1-3}
+Nepatenkinamų stud. įrašymas   &0.\+109401   &0.\+738442    \\\cline{1-3}
+Patenkinamų stud. įrašymas   &0.\+144365   &1.\+01084    \\\cline{1-3}
+Visas laikas (be įvesties)   &0.\+633825   &4.\+62428   \\\cline{1-3}
+\end{longtabu}
+
+
+{\bfseries{struct}}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endhead
+Duomenų nuskaitymas   &0.\+291732   &1.\+37662    \\\cline{1-3}
+Studentų rūšiavimas į dvi grupes   &0.\+0042403   &0.\+0318562    \\\cline{1-3}
+Studentų rikiavimas (pagal galutinį vid.)   &0.\+0192268   &0.\+309694    \\\cline{1-3}
+Nepatenkinamų stud. įrašymas   &0.\+0450104   &0.\+37274    \\\cline{1-3}
+Patenkinamų stud. įrašymas   &0.\+0627002   &0.\+549383    \\\cline{1-3}
+Visas laikas (be įvesties)   &0.\+424141   &2.\+64151   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsubsection{\texorpdfstring{O2}{O2}}\label{md__r_e_a_d_m_e_autotoc_md12}
+{\bfseries{class}}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endhead
+Duomenų nuskaitymas   &0.\+308291   &1.\+5634    \\\cline{1-3}
+Studentų rūšiavimas į dvi grupes   &0.\+0125242   &0.\+163663    \\\cline{1-3}
+Studentų rikiavimas (pagal galutinį vid.)   &0.\+0768268   &1.\+09284    \\\cline{1-3}
+Nepatenkinamų stud. įrašymas   &0.\+0838686   &0.\+746606    \\\cline{1-3}
+Patenkinamų stud. įrašymas   &0.\+119298   &1.\+069    \\\cline{1-3}
+Visas laikas (be įvesties)   &0.\+602014   &4.\+63658   \\\cline{1-3}
+\end{longtabu}
+
+
+{\bfseries{struct}}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endhead
+Duomenų nuskaitymas   &0.\+283916   &1.\+49784    \\\cline{1-3}
+Studentų rūšiavimas į dvi grupes   &0.\+0040509   &0.\+0505524    \\\cline{1-3}
+Studentų rikiavimas (pagal galutinį vid.)   &0.\+019015   &0.\+297101    \\\cline{1-3}
+Nepatenkinamų stud. įrašymas   &0.\+0422741   &0.\+398234    \\\cline{1-3}
+Patenkinamų stud. įrašymas   &0.\+0632793   &0.\+542183    \\\cline{1-3}
+Visas laikas (be įvesties)   &0.\+413627   &2.\+78692   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysubsubsection{\texorpdfstring{O3}{O3}}\label{md__r_e_a_d_m_e_autotoc_md13}
+{\bfseries{class}}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endhead
+Duomenų nuskaitymas   &0.\+300681   &1.\+4992    \\\cline{1-3}
+Studentų rūšiavimas į dvi grupes   &0.\+015888   &0.\+117621    \\\cline{1-3}
+Studentų rikiavimas (pagal galutinį vid.)   &0.\+0856192   &1.\+06428    \\\cline{1-3}
+Nepatenkinamų stud. įrašymas   &0.\+0939197   &0.\+709202    \\\cline{1-3}
+Patenkinamų stud. įrašymas   &0.\+134521   &1.\+00598    \\\cline{1-3}
+Visas laikas (be įvesties)   &0.\+631756   &4.\+39729   \\\cline{1-3}
+\end{longtabu}
+
+
+{\bfseries{struct}}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt    }\\\cline{1-3}
+\endhead
+Duomenų nuskaitymas   &0.\+279097   &1.\+413    \\\cline{1-3}
+Studentų rūšiavimas į dvi grupes   &0.\+0032647   &0.\+0528338    \\\cline{1-3}
+Studentų rikiavimas (pagal galutinį vid.)   &0.\+0192365   &0.\+287692    \\\cline{1-3}
+Nepatenkinamų stud. įrašymas   &0.\+0474045   &0.\+406698    \\\cline{1-3}
+Patenkinamų stud. įrašymas   &0.\+0620375   &0.\+572647    \\\cline{1-3}
+Visas laikas (be įvesties)   &0.\+412173   &2.\+73402   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysubsubsection{\texorpdfstring{Failų dydžiai}{Failų dydžiai}}\label{md__r_e_a_d_m_e_autotoc_md14}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dydis (KB)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Be optimizacijos   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ O1   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ O2   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ O3    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dydis (KB)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Be optimizacijos   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ O1   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ O2   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ O3    }\\\cline{1-5}
+\endhead
+class   &357   &178   &162   &205    \\\cline{1-5}
+struct   &350   &168   &162   &171   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysection{\texorpdfstring{Testavimo rezultatai (SENA VERSIJA -\/ v1.\+0)}{Testavimo rezultatai (SENA VERSIJA -\/ v1.\+0)}}\label{md__r_e_a_d_m_e_autotoc_md15}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysubsection{\texorpdfstring{3-\/as tyrimas -\/ veiksmų su įvairaus dydžio failais veikimo spartos palyginimas naudojant skirtingus konteinerius}{3-\/as tyrimas -\/ veiksmų su įvairaus dydžio failais veikimo spartos palyginimas naudojant skirtingus konteinerius}}\label{md__r_e_a_d_m_e_autotoc_md16}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md17}{}\doxysubsubsection{\texorpdfstring{std\+::vector\+:}{std\+::vector\+:}}\label{md__r_e_a_d_m_e_autotoc_md17}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai10000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000000.\+txt    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai10000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000000.\+txt    }\\\cline{1-6}
+\endhead
+Duomenų nuskaitymas   &0.\+0079811   &0.\+0487976   &0.\+531535   &2.\+61098   &40.\+1398    \\\cline{1-6}
+Studentų rūšiavimas į dvi grupes   &0.\+0003127   &0.\+0032477   &0.\+0311697   &0.\+40542   &2.\+92201    \\\cline{1-6}
+Studentų rikiavimas (pagal galutinį vid.)   &0.\+0012382   &0.\+0124778   &0.\+183998   &2.\+35545   &33.\+5949    \\\cline{1-6}
+Nepatenkinamų stud. įrašymas   &0.\+0135206   &0.\+0074135   &0.\+0548416   &0.\+52273   &4.\+82187    \\\cline{1-6}
+Patenkinamų stud. įrašymas   &0.\+0023206   &0.\+0117405   &0.\+0714214   &0.\+95434   &7.\+61723    \\\cline{1-6}
+Visas laikas (be įvesties)   &0.\+0263308   &0.\+0848641   &0.\+87404   &6.\+84993   &89.\+0968   \\\cline{1-6}
+\end{longtabu}
+
+
+{\ttfamily std\+::vector} suteikia greitą atsitiktinę prieigą ir yra efektyvus pridedant/pašalinant elementus konteinerio gale, tačiau lėčiau vyksta rikiavimas.\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysubsubsection{\texorpdfstring{std\+::list\+:}{std\+::list\+:}}\label{md__r_e_a_d_m_e_autotoc_md18}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai10000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000000.\+txt    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai10000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000000.\+txt    }\\\cline{1-6}
+\endhead
+Duomenų nuskaitymas   &0.\+005016   &0.\+0542886   &0.\+554947   &2.\+57551   &40.\+0213    \\\cline{1-6}
+Studentų rūšiavimas į dvi grupes   &0.\+0002704   &0.\+0027486   &0.\+0294175   &0.\+304561   &2.\+68456    \\\cline{1-6}
+Studentų rikiavimas (pagal galutinį vid.)   &0.\+0003741   &0.\+0046876   &0.\+0601057   &0.\+916619   &15.\+4971    \\\cline{1-6}
+Nepatenkinamų stud. įrašymas   &0.\+0023782   &0.\+0082674   &0.\+069381   &0.\+561922   &23.\+1234    \\\cline{1-6}
+Patenkinamų stud. įrašymas   &0.\+0021207   &0.\+0129539   &0.\+0906158   &0.\+897952   &7.\+86134    \\\cline{1-6}
+Visas laikas (be įvesties)   &0.\+0110467   &0.\+0840572   &0.\+805627   &5.\+25787   &89.\+1898   \\\cline{1-6}
+\end{longtabu}
+
+
+{\ttfamily std\+::list} yra dvipusis sąrašas, kuris leidžia greitai įterpti ir pašalinti elementus bet kurioje vietoje. Tačiau, kadangi elementai nėra saugomi gretimuose atminties blokuose, atsitiktinė prieiga yra lėta.\hypertarget{md__r_e_a_d_m_e_autotoc_md19}{}\doxysubsubsection{\texorpdfstring{std\+::deque\+:}{std\+::deque\+:}}\label{md__r_e_a_d_m_e_autotoc_md19}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai10000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000000.\+txt    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai10000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000000.\+txt    }\\\cline{1-6}
+\endhead
+Duomenų nuskaitymas   &0.\+0047706   &0.\+0471314   &0.\+516918   &2.\+47154   &39.\+3773    \\\cline{1-6}
+Studentų rūšiavimas į dvi grupes   &0.\+0002705   &0.\+0027023   &0.\+0244668   &0.\+243373   &2.\+14507    \\\cline{1-6}
+Studentų rikiavimas (pagal galutinį vid.)   &0.\+0014055   &0.\+0162116   &0.\+226202   &2.\+95295   &41.\+2255    \\\cline{1-6}
+Nepatenkinamų stud. įrašymas   &0.\+0026466   &0.\+0094148   &0.\+0765059   &0.\+734575   &7.\+40374    \\\cline{1-6}
+Patenkinamų stud. įrašymas   &0.\+002045   &0.\+0122805   &0.\+107698   &0.\+976536   &10.\+6144    \\\cline{1-6}
+Visas laikas (be įvesties)   &0.\+01218   &0.\+0890443   &0.\+952917   &7.\+38004   &100.\+768   \\\cline{1-6}
+\end{longtabu}
+
+
+{\ttfamily std\+::deque} yra kaip tarpinė būsena tarp {\ttfamily std\+::vector} ir {\ttfamily std\+::list}. Jis leidžia greitai pridėti ir pašalinti elementus tiek priekyje, tiek gale, bet atsitiktinė prieiga yra šiek tiek lėtesnė nei std\+::vector.\hypertarget{md__r_e_a_d_m_e_autotoc_md20}{}\doxysubsection{\texorpdfstring{4-\/as tyrimas -\/ rūšiavimo realizacijų veikimo spartos palyginimas}{4-\/as tyrimas -\/ rūšiavimo realizacijų veikimo spartos palyginimas}}\label{md__r_e_a_d_m_e_autotoc_md20}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md21}{}\doxysubsubsection{\texorpdfstring{1 strategija -\/ du nauji to paties tipo konteineriai}{1 strategija -\/ du nauji to paties tipo konteineriai}}\label{md__r_e_a_d_m_e_autotoc_md21}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::list   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::deque    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::list   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::deque    }\\\cline{1-4}
+\endhead
+studentai\+\_\+1000.\+txt   &0.\+0003127   &0.\+0002704   &0.\+0002705    \\\cline{1-4}
+studentai10000.\+txt   &0.\+0032477   &0.\+0027486   &0.\+0027023    \\\cline{1-4}
+studentai100000.\+txt   &0.\+0311697   &0.\+0294175   &0.\+0244668    \\\cline{1-4}
+studentai1000000.\+txt   &0.\+40542   &0.\+304561   &0.\+243373    \\\cline{1-4}
+studentai\+\_\+1000000.\+txt   &2.\+92201   &2.\+68456   &2.\+14507   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md22}{}\doxysubsubsection{\texorpdfstring{2 strategija -\/ tik vienas naujas nepatenkinamų studentų konteineris}{2 strategija -\/ tik vienas naujas nepatenkinamų studentų konteineris}}\label{md__r_e_a_d_m_e_autotoc_md22}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::list   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::deque    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::list   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::deque    }\\\cline{1-4}
+\endhead
+studentai\+\_\+1000.\+txt   &0.\+0012996   &0.\+0006707   &0.\+0015146    \\\cline{1-4}
+studentai10000.\+txt   &0.\+200978   &0.\+0067772   &0.\+0175728    \\\cline{1-4}
+studentai100000.\+txt   &0.\+22196   &0.\+0954995   &0.\+248444    \\\cline{1-4}
+studentai1000000.\+txt   &2.\+58776   &1.\+25379   &3.\+08339    \\\cline{1-4}
+studentai\+\_\+1000000.\+txt   &36.\+8585   &20.\+8087   &41.\+5902   \\\cline{1-4}
+\end{longtabu}
+
+
+Visose realizacijose rūšiavimas vyksta lėčiau, tačiau tai yra daug efektyviau atminties naudojimo atžvilgiu.\hypertarget{md__r_e_a_d_m_e_autotoc_md23}{}\doxysubsubsection{\texorpdfstring{3 strategija -\/ naudojamos optimizacijos 2-\/ai strategijai pagerinti}{3 strategija -\/ naudojamos optimizacijos 2-\/ai strategijai pagerinti}}\label{md__r_e_a_d_m_e_autotoc_md23}
+Kadangi 1-\/osios strategijos konteinerių veikimą {\bfseries{pateiktais}} algoritmais nelabai būtų galima pagreitinti, pasirinkau optimizuoti 2-\/ąją strategiją, nes ši iš pradžių buvo itin lėta.
+
+Optimizacijai panaudojau {\ttfamily std\+::partition} algoritmą, kuris su predikatu pertvarko vektoriaus elementus taip, kad patenkinami būtų priekyje, o nepatenkinami gale. Tokiu būdu išvengiama pakartotinų {\ttfamily erase} operacijų, kuri šiems konteineriams yra brangi, nes reikia pertvarkyti visus elementus taip, kad būtų užpildomas naujai atsiradęs tarpas. Taip pat konteinerio elementai yra perkeliami naudojant {\ttfamily std\+::make\+\_\+move\+\_\+iterator}, kad nereikėtų jų kopijuoti.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::list   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::deque    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::list   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::deque    }\\\cline{1-4}
+\endhead
+studentai\+\_\+1000.\+txt   &0.\+0001595   &0.\+0002096   &0.\+000229    \\\cline{1-4}
+studentai10000.\+txt   &0.\+0016814   &0.\+0021475   &0.\+0020181    \\\cline{1-4}
+studentai100000.\+txt   &0.\+0172146   &0.\+0208541   &0.\+0218965    \\\cline{1-4}
+studentai1000000.\+txt   &0.\+132258   &0.\+194196   &0.\+197143    \\\cline{1-4}
+studentai\+\_\+1000000.\+txt   &1.\+33541   &1.\+81953   &1.\+93628   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysection{\texorpdfstring{Testavimo rezultatai (SENA VERSIJA -\/ v0.\+4)}{Testavimo rezultatai (SENA VERSIJA -\/ v0.\+4)}}\label{md__r_e_a_d_m_e_autotoc_md24}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md25}{}\doxysubsection{\texorpdfstring{1-\/as tyrimas – atsitiktinių studentų failų generavimas}{1-\/as tyrimas – atsitiktinių studentų failų generavimas}}\label{md__r_e_a_d_m_e_autotoc_md25}
+Kiekvienam failui generuojama 15 namų darbų pažymių.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bandymo nr.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1,000 (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10,000 (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100,000 (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1,000,000 (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10,000,000 (s)    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bandymo nr.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1,000 (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10,000 (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100,000 (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1,000,000 (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10,000,000 (s)    }\\\cline{1-6}
+\endhead
+\#1   &0.\+0122881   &0.\+0562507   &0.\+525285   &5.\+12021   &50.\+9886    \\\cline{1-6}
+\#2   &0.\+0065812   &0.\+0552215   &0.\+487528   &4.\+86378   &47.\+3717    \\\cline{1-6}
+\#3   &0.\+0060949   &0.\+0546876   &0.\+495838   &4.\+73056   &50.\+3248    \\\cline{1-6}
+Avg   &0.\+0083214   &0.\+0553866   &0.\+5028837   &4.\+90485   &49.\+5617   \\\cline{1-6}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysubsection{\texorpdfstring{2-\/as tyrimas – veiksmai su įvairaus dydžio failais}{2-\/as tyrimas – veiksmai su įvairaus dydžio failais}}\label{md__r_e_a_d_m_e_autotoc_md26}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai10000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000000.\+txt    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Veiksmas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai10000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai100000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai1000000.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ studentai\+\_\+1000000.\+txt    }\\\cline{1-6}
+\endhead
+Duomenų nuskaitymas   &0.\+004684   &0.\+0439758   &0.\+525648   &2.\+51385   &40.\+7778    \\\cline{1-6}
+Studentų rūšiavimas į dvi grupes   &0.\+000408   &0.\+003108   &0.\+0323843   &0.\+319982   &3.\+22454    \\\cline{1-6}
+Studentų rikiavimas (pagal galutinį vid.)   &0.\+0014113   &0.\+0134936   &0.\+195734   &2.\+53566   &36.\+1703    \\\cline{1-6}
+Nepatenkinamų stud. įrašymas   &0.\+0022855   &0.\+0060508   &0.\+0517857   &0.\+49798   &5.\+58282    \\\cline{1-6}
+Patenkinamų stud. įrašymas   &0.\+0013947   &0.\+0082172   &0.\+0670584   &0.\+60272   &7.\+11938    \\\cline{1-6}
+Visas laikas (be įvesties)   &0.\+0112775   &0.\+0763587   &0.\+875746   &6.\+4748   &92.\+8779   \\\cline{1-6}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md27}{}\doxysection{\texorpdfstring{Testavimo rezultatai (SENA VERSIJA -\/ v0.\+2)}{Testavimo rezultatai (SENA VERSIJA -\/ v0.\+2)}}\label{md__r_e_a_d_m_e_autotoc_md27}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md28}{}\doxysubsection{\texorpdfstring{Preliminarus tyrimas}{Preliminarus tyrimas}}\label{md__r_e_a_d_m_e_autotoc_md28}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md29}{}\doxysubsubsection{\texorpdfstring{Failo nuskaitymas}{Failo nuskaitymas}}\label{md__r_e_a_d_m_e_autotoc_md29}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bandymo nr.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10k (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100k (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 mil (s)    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bandymo nr.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10k (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100k (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 mil (s)    }\\\cline{1-4}
+\endhead
+\#1   &0.\+04551   &0.\+54182   &2.\+57977    \\\cline{1-4}
+\#2   &0.\+04652   &0.\+53072   &2.\+56835    \\\cline{1-4}
+\#3   &0.\+05092   &0.\+54170   &2.\+55759    \\\cline{1-4}
+Avg   &0.\+04765   &0.\+53808   &2.\+56857   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md30}{}\doxysubsubsection{\texorpdfstring{Rikiavimas pagal 3-\/ią pasirinkimą (galutinis pažymys, vid.)}{Rikiavimas pagal 3-\/ią pasirinkimą (galutinis pažymys, vid.)}}\label{md__r_e_a_d_m_e_autotoc_md30}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bandymo nr.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10k (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100k (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 mil (s)    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bandymo nr.   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10k (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100k (s)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 mil (s)    }\\\cline{1-4}
+\endhead
+\#1   &0.\+01309   &0.\+16808   &2.\+18078    \\\cline{1-4}
+\#2   &0.\+01324   &0.\+17555   &2.\+23208    \\\cline{1-4}
+\#3   &0.\+01122   &0.\+17587   &2.\+11809    \\\cline{1-4}
+Avg   &0.\+01252   &0.\+17317   &2.\+17698   \\\cline{1-4}
+\end{longtabu}

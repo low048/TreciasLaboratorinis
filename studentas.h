@@ -87,7 +87,9 @@ public:
 
     /// Išvesties operatorius
     friend std::ostream& operator<<(std::ostream& os, const Studentas& studentas) {
-        os << studentas.vardas_ << " " << studentas.pavarde_ << " " << studentas.galutinisVid_ << " " << studentas.galutinisMed_;
+        os << studentas.vardas_ << " " << studentas.pavarde_ << " " 
+        << std::fixed << std::setprecision(2) << studentas.galutinisVid_ << " " 
+        << std::fixed << std::setprecision(2) << studentas.galutinisMed_;
         return os;
     }
 

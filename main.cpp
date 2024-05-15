@@ -17,10 +17,9 @@ int main() {
             << "4 - Nuskaityti studentų duomenis iš failo\n"
             << "5 - Generuoti atsitiktinį studentų sąrašo failą\n"
             << "6 - Rūšiuoti studentus pagal nepatenkinamus ir patenkinamus galutinius įvertinimus\n"
-            << "7 - v1.2 metodų testavimas\n"
-            << "8 - Baigti darbą\n"
+            << "7 - Baigti darbą\n"
             << "Pasirinkimas: ";
-        meniuPasirinkimas = patikrintiSkaiciu(1, 8);
+        meniuPasirinkimas = patikrintiSkaiciu(1, 7);
         switch(meniuPasirinkimas) {
             case 1: {
                 //duomenys įvedami ranka
@@ -239,43 +238,6 @@ int main() {
                 break;
             }
             case 7: {
-                //patikrinamas konstruktorius bei išvedimo operatorius
-                Studentas s1("Jonas", "Jonaitis", 9, {8, 9, 10}, 27);
-                std::cout << "Sukurtas s1: " << s1 << '\n';
-
-                //patikrinamas kopijavimo konstruktorius bei išvedimo operatorius
-                Studentas s2(s1);
-                std::cout << "s1 nukopijuotas į s2: " << s2 << '\n';
-
-                //modifikuojamas s2 ir patikrinama, kad s1 liko nepakitęs
-                s2.setVardas("Petras");
-                std::cout << "Modifikuotas s2: " << s2 << '\n';
-                std::cout << "s1 liko: " << s1 << '\n';
-
-                //patikrinamas kopijavimo priskyrimo operatorius bei išvedimo operatorius
-                Studentas s3;
-                s3 = s1;
-                std::cout << "s1 priskirtas s3: " << s3 << '\n';
-
-                //patikrinamas perkėlimo konstruktorius bei išvedimo operatorius
-                Studentas s4(std::move(s1));
-                std::cout << "s1 perkeltas į s4: " << s4 << '\n';
-                std::cout << "s1 po perkėlimo: " << s1 << " (turėtų būti tuščias)\n";
-
-                //patikrinamas perkėlimo priskyrimo operatorius bei išvedimo operatorius
-                Studentas s5;
-                s5 = std::move(s2);
-                std::cout << "s2 perkeltas į s5: " << s5 << '\n';
-                std::cout << "s2 po perkėlimo: " << s2 << " (turėtų būti tuščias)\n";
-
-                //patikrinamas įvesties operatorius
-                std::istringstream iss("Petras Petraitis 8 7 8 9 8");
-                Studentas s6;
-                iss >> s6;
-                std::cout << "Nuskaityta iš srauto į s6: " << s6 << '\n';
-                break;
-            }
-            case 8: {
                 //darbo baigimas, rikiavimas
                 std::cout << "Ar norite rikiuoti visų studentų sąrašą? (t/n): ";
                 bool arRikiuoti = patikrintiTaipNe();
@@ -292,7 +254,7 @@ int main() {
             default:
                 std::cout << "Netinkamas pasirinkimas, bandykite iš naujo.\n";
         }
-    } while(meniuPasirinkimas != 8);
+    } while(meniuPasirinkimas != 7);
     std::cout << "Išvesti į:\n1 - Konsolę\n2 - Failą\nPasirinkimas: ";
     int isvestiesPasirinkimas = patikrintiSkaiciu(1, 2);
     if (isvestiesPasirinkimas == 2) {

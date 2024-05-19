@@ -10,7 +10,7 @@ void Studentas::apskaiciuotiGalutini() {
             galutinisMed_ = (namuDarbai_[n / 2 - 1] + namuDarbai_[n / 2]) / 2.0; //jei ne, mediana dviejų vidurinių skaičių aritmetinis vidurkis
         }
         galutinisMed_ = (galutinisMed_ * 0.4) + (egz_ * 0.6);
-        galutinisVid_ = ((double)sum_ / n * 0.4) + (egz_ * 0.6);
+        galutinisVid_ = (((double)sum_ / n) * 0.4) + (egz_ * 0.6);
     } else {
         galutinisMed_ = (egz_ * 0.6);
         galutinisVid_ = (egz_ * 0.6);

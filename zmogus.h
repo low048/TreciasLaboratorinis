@@ -5,34 +5,36 @@
 
 class Zmogus {
 protected:
-    std::string vardas_;
-    std::string pavarde_;
+    std::string vardas_; ///< Vardas
+    std::string pavarde_; ///< Pavardė
 
 public:
-    //konstruktoriai
+    /// Konstruktorius su parametrais
     Zmogus(const std::string& vardas, const std::string& pavarde) : vardas_{vardas}, pavarde_{pavarde} {}
+    /// Konstruktorius be parametrų
     Zmogus() : vardas_{""}, pavarde_{""} {}
 
-    //kopijavimo konstruktorius
+    /// Kopijavimo konstruktorius
     Zmogus(const Zmogus& other) : vardas_{other.vardas_}, pavarde_{other.pavarde_} {}
 
-    //perkėlimo konstruktorius
+    /// Perkėlimo konstruktorius
     Zmogus(Zmogus&& other) noexcept : vardas_{std::move(other.vardas_)}, pavarde_{std::move(other.pavarde_)} {
         other.vardas_ = "";
         other.pavarde_ = "";
     }
 
+    /// Destruktorius
     virtual ~Zmogus() {}
-    
-    //getteriai
-    std::string getVardas() const { return vardas_; }
-    std::string getPavarde() const { return pavarde_; }
 
-    //setteriai
-    void setVardas(const std::string& v) { vardas_ = v; }
-    void setPavarde(const std::string& p) { pavarde_ = p; }
+    // Getteriai
+    std::string getVardas() const { return vardas_; } ///< Grąžina vardą
+    std::string getPavarde() const { return pavarde_; } ///< Grąžina pavardę
 
-    //visiskai virtuali funkcija
+    // Setteriai
+    void setVardas(const std::string& v) { vardas_ = v; } ///< Nustato vardą
+    void setPavarde(const std::string& p) { pavarde_ = p; } ///< Nustato pavardę
+
+    /// Visiškai virtuali funkcija
     virtual void atspausdintiInformacija() const = 0;
 };
 

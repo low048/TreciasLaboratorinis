@@ -2,7 +2,7 @@
 #define STUDENTAS_H
 
 #include <string>
-#include <vector>
+#include "Vector.h"
 #include <algorithm>
 #include <fstream>  
 #include <sstream>  
@@ -13,7 +13,7 @@
 
 class Studentas : public Zmogus {
 private:
-    std::vector<int> namuDarbai_; ///< Namų darbų rezultatų vektorius
+    Vector<int> namuDarbai_; ///< Namų darbų rezultatų vektorius
     int sum_ = 0; ///< Namų darbų rezultatų suma
     int egz_ = 0; ///< Egzamino rezultatas
     float galutinisVid_ = 0.0; ///< Galutinis balas (vidurkis)
@@ -21,7 +21,7 @@ private:
 
 public:
     /// Konstruktorius su parametrais
-    Studentas(const std::string& vardas, const std::string& pavarde, int egz, const std::vector<int>& namuDarbai, int sum)
+    Studentas(const std::string& vardas, const std::string& pavarde, int egz, const Vector<int>& namuDarbai, int sum)
         : Zmogus{vardas, pavarde}, egz_{egz}, namuDarbai_{namuDarbai}, sum_{sum} {
         apskaiciuotiGalutini();
     }
@@ -94,14 +94,14 @@ public:
     }
 
     // Getteriai
-    std::vector<int> getNamuDarbai() const { return namuDarbai_; } ///< Grąžina namų darbų pažymių vektorių
+    Vector<int> getNamuDarbai() const { return namuDarbai_; } ///< Grąžina namų darbų pažymių vektorių
     int getSum() const { return sum_; } ///< Grąžina pažymių sumą
     int getEgz() const { return egz_; } ///< Grąžina egzamino pažymį
     float getGalutinisVid() const { return galutinisVid_; } ///< Grąžina galutinį balą (vidurkis)
     float getGalutinisMed() const { return galutinisMed_; } ///< Grąžina galutinį balą (mediana)
 
     // Setteriai
-    void setNamuDarbai(const std::vector<int>& nd) { namuDarbai_ = nd; } ///< Nustato namų darbų pažymių vektorių
+    void setNamuDarbai(const Vector<int>& nd) { namuDarbai_ = nd; } ///< Nustato namų darbų pažymių vektorių
     void setSum(int s) { sum_ = s; } ///< Nustato pažymių sumą
     void setEgz(int e) { egz_ = e; } ///< Nustato egzamino pažymį
     void setGalutinisVid(float gv) { galutinisVid_ = gv; } ///< Nustato galutinį balą (vidurkis)
@@ -115,8 +115,8 @@ public:
     } ///< Atspausdina studento informaciją
 
     // Klasės funkcijos
-    static void irasytiStudentuDuomenis(const std::string& failoPavadinimas, const std::vector<Studentas>& studentai); ///< Įrašo studento duomenis į failą
-    static void rikiuotiStudentus(std::vector<Studentas>& studentai, int rikiavimoPasirinkimas); ///< Rikiuoja studentų vektorių pagal pasirinkimą
+    static void irasytiStudentuDuomenis(const std::string& failoPavadinimas, const Vector<Studentas>& studentai); ///< Įrašo studento duomenis į failą
+    static void rikiuotiStudentus(Vector<Studentas>& studentai, int rikiavimoPasirinkimas); ///< Rikiuoja studentų vektorių pagal pasirinkimą
 };
 
 #endif

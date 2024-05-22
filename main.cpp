@@ -3,7 +3,7 @@
 #include "timer.h"
 
 int main() {
-    std::vector<Studentas> studentai;
+    Vector<Studentas> studentai;
     int meniuPasirinkimas = 0;
     double timeSum;
     do {
@@ -17,15 +17,16 @@ int main() {
             << "4 - Nuskaityti studentų duomenis iš failo\n"
             << "5 - Generuoti atsitiktinį studentų sąrašo failą\n"
             << "6 - Rūšiuoti studentus pagal nepatenkinamus ir patenkinamus galutinius įvertinimus\n"
-            << "7 - Baigti darbą\n"
+            << "7 - Spartos analizė: std::vector vs Vector\n"
+            << "8 - Baigti darbą\n"
             << "Pasirinkimas: ";
-        meniuPasirinkimas = patikrintiSkaiciu(1, 7);
+        meniuPasirinkimas = patikrintiSkaiciu(1, 8);
         switch(meniuPasirinkimas) {
             case 1: {
                 //duomenys įvedami ranka
                 std::string vardas, pavarde;
                 int egz, pazymys;
-                std::vector<int> namuDarbai;
+                Vector<int> namuDarbai;
                 std::cout << "  Įveskite studento vardą: ";
                 std::cin >> vardas;
                 std::cout << "  Įveskite studento pavardę: ";
@@ -48,7 +49,7 @@ int main() {
                 //atsitiktinai generuojami tik pažymiai
                 std::string vardas, pavarde;
                 int egz, pazymys;
-                std::vector<int> namuDarbai;
+                Vector<int> namuDarbai;
                 std::cout << "  Įveskite studento vardą: ";
                 std::cin >> vardas;
                 std::cout << "  Įveskite studento pavardę: ";
@@ -76,7 +77,7 @@ int main() {
                     std::string vardas = "Vardas" + std::to_string(i + 1);
                     std::string pavarde = "Pavarde" + std::to_string(i + 1);
                     int egz = generuotiAtsitiktiniSkaiciu(1, 10);
-                    std::vector<int> namuDarbai;
+                    Vector<int> namuDarbai;
                     int sum = 0;
                     for (int v = 0; v < namuDarbuSkaicius; v++) {
                         int pazymys = generuotiAtsitiktiniSkaiciu(1, 10);
@@ -94,6 +95,10 @@ int main() {
                 system("dir *.txt");
                 std::cout << "  Įveskite failo pavadinimą: ";
                 std::cin >> failoPavadinimas;
+
+                int atmintiesPerskirstymai = 0;
+                size_t paskutinisCapacity = studentai.capacity();
+
                 Timer t;
                 try {
                     std::ifstream file(failoPavadinimas);
@@ -102,6 +107,10 @@ int main() {
 
                     std::string eilute;
                     while (std::getline(file, eilute)) {
+                        if (studentai.capacity() != paskutinisCapacity) {
+                            atmintiesPerskirstymai++;
+                            paskutinisCapacity = studentai.capacity();
+                        }
                         try {
                             std::istringstream eilutesSrautas(eilute);
                             studentai.push_back(Studentas(eilutesSrautas));
@@ -113,8 +122,8 @@ int main() {
                 } catch (std::exception& e) {
                     std::cout << "Nuskaitant failą įvyko klaida: " << e.what() << '\n';
                 }
-                std::cout << "Failo nuskaitymas užtruko " << t.elapsed() << " s\n";
-                timeSum += t.elapsed();
+                std::cout << "Failo nuskaitymas į std::vector užtruko " << t.elapsed() << " s\n";
+                std::cout << "std::vector atminties perskirstymai: " << atmintiesPerskirstymai << std::endl;
                 break;
             }
             case 5: {
@@ -159,10 +168,10 @@ int main() {
                 std::cout << "Pasirinkite strategiją:\n1 - Pirmoji strategija\n2 - Antroji strategija\n3 - Trečioji strategija\nPasirinkimas: ";
                 int strategija = patikrintiSkaiciu(1, 3);
                 Timer t;
-                std::vector<Studentas> nepatenkinami;
+                Vector<Studentas> nepatenkinami;
                 switch (strategija) {
                     case 1: {
-                        std::vector<Studentas> patenkinami;
+                        Vector<Studentas> patenkinami;
                         for (const auto& studentas : studentai) {
                             if (studentas.getGalutinisVid() < 5) {
                                 nepatenkinami.push_back(studentas);
@@ -238,6 +247,42 @@ int main() {
                 break;
             }
             case 7: {
+                const std::vector<size_t> testu_dydziai = {10000, 100000, 1000000, 10000000, 100000000};
+                const int bandymai = 3;
+
+                std::cout << "Spartos analizė: std::vector vs Vector\n";
+
+                for (size_t dydis : testu_dydziai) {
+                    double std_vector_laikas = 0;
+                    double mano_vector_laikas = 0;
+
+                    for (int i = 0; i < bandymai; ++i) {
+                        std::vector<int> v1;
+                        Timer timer;
+                        for (size_t j = 1; j <= dydis; ++j) {
+                            v1.push_back(j);
+                        }
+                        std_vector_laikas += timer.elapsed();
+                    }
+                    std_vector_laikas /= bandymai;
+
+                    for (int i = 0; i < bandymai; ++i) {
+                        Vector<int> v2;
+                        Timer timer;
+                        for (size_t j = 1; j <= dydis; ++j) {
+                            v2.push_back(j);
+                        }
+                        mano_vector_laikas += timer.elapsed();
+                    }
+                    mano_vector_laikas /= bandymai;
+
+                    std::cout << "Dydis: " << dydis << "\n";
+                    std::cout << "std::vector (s): " << std_vector_laikas << "\n";
+                    std::cout << "Vector (s): " << mano_vector_laikas << "\n\n";
+                }
+                break;
+            }
+            case 8: {
                 //darbo baigimas, rikiavimas
                 std::cout << "Ar norite rikiuoti visų studentų sąrašą? (t/n): ";
                 bool arRikiuoti = patikrintiTaipNe();
@@ -254,7 +299,7 @@ int main() {
             default:
                 std::cout << "Netinkamas pasirinkimas, bandykite iš naujo.\n";
         }
-    } while(meniuPasirinkimas != 7);
+    } while(meniuPasirinkimas != 8);
     std::cout << "Išvesti į:\n1 - Konsolę\n2 - Failą\nPasirinkimas: ";
     int isvestiesPasirinkimas = patikrintiSkaiciu(1, 2);
     if (isvestiesPasirinkimas == 2) {

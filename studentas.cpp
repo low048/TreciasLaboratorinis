@@ -37,7 +37,7 @@ std::istream& Studentas::nuskaitytiStudenta(std::istream& is) {
     return is;
 }
 
-void Studentas::irasytiStudentuDuomenis(const std::string& failoPavadinimas, const std::vector<Studentas>& studentai) {
+void Studentas::irasytiStudentuDuomenis(const std::string& failoPavadinimas, const Vector<Studentas>& studentai) {
     std::ofstream rezultatuFailas(failoPavadinimas);
     if (rezultatuFailas.is_open()) {
         rezultatuFailas << "Pavardė       Vardas        Galutinis (Vid.)  Galutinis (Med.)\n";
@@ -56,7 +56,7 @@ void Studentas::irasytiStudentuDuomenis(const std::string& failoPavadinimas, con
     }
 }
 
-void Studentas::rikiuotiStudentus(std::vector<Studentas>& studentai, int rikiavimoPasirinkimas) {
+void Studentas::rikiuotiStudentus(Vector<Studentas>& studentai, int rikiavimoPasirinkimas) {
     switch (rikiavimoPasirinkimas) {
         case 1:
             std::sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {

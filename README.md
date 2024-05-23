@@ -2,7 +2,7 @@
 <summary>Instaliavimo iš setup.msi instrukcija</summary>
 <br>
 
-- Parsisiųskite setup.msi iš projekto "releases" puslapio.
+- Parsisiųskite [setup.msi](https://github.com/low048/TreciasLaboratorinis/releases/download/v3.0/setup.msi) iš projekto "releases" puslapio.
 - Atidarykite parsisiųstą failą.
 - Pasirinkite, kur norite instaliuoti programą.
 - Sekite instrukcijas ekrane.

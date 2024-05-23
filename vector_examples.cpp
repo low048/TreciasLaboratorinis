@@ -52,11 +52,7 @@ int main() {
     std::cout << "4: " << words4;
 
     auto const rg = {"cat", "cow", "crow"};
-#ifdef __cpp_lib_containers_ranges
-    Vector<std::string> words5(std::from_range, rg); // overload (11)
-#else
     Vector<std::string> words5(rg.begin(), rg.end()); // overload (5)
-#endif
     std::cout << "5: " << words5;
 
     // std::vector<T,Allocator>::operator=
@@ -571,7 +567,7 @@ int main() {
     auto pos = std::next(container.begin(), 2);
     assert(*pos == 3);
     const auto rg2 = std::list{-1, -2, -3};
-    container.insert_range(pos, rg);
+    container.insert_range(pos, rg2);
     assert(std::ranges::equal(container, std::vector{1, 2, -1, -2, -3, 3, 4}));
 #endif
 

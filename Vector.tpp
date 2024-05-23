@@ -133,8 +133,8 @@ void Vector<T, Allocator>::assign(InputIt first, InputIt last) {
         reallocate(count);
     }
     if (count > mSize) {
-        std::copy(first, first + mSize, mData);
-        std::uninitialized_copy(first + mSize, last, mData + mSize);
+        std::copy(first, std::next(first, mSize), mData);
+        std::uninitialized_copy(std::next(first, mSize), last, mData + mSize);
     } else {
         std::copy(first, last, mData);
         for (size_type i = count; i < mSize; ++i) {

@@ -1,6 +1,6 @@
 .PHONY: all program test examples clean
 
-all: program
+all: program test examples
 
 program: main.cpp studentas.cpp funkcijos.cpp
 	g++ main.cpp studentas.cpp funkcijos.cpp -o program.exe

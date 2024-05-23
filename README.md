@@ -1,5 +1,16 @@
 <details>
-<summary>Įdiegimo bei naudojimo instrukcija</summary>
+<summary>Instaliavimo iš setup.msi instrukcija</summary>
+<br>
+
+- Parsisiųskite setup.msi iš projekto "releases" puslapio.
+- Atidarykite parsisiųstą failą.
+- Pasirinkite, kur norite instaliuoti programą.
+- Sekite instrukcijas ekrane.
+
+</details>
+
+<details>
+<summary>Pirminio kodo kompiliavimo instrukcija</summary>
 <br>
 
 ## Projekto persikėlimas į savo kompiuterį
@@ -31,13 +42,18 @@
     - `make all` - jei norite kompiliuoti visas anksčiau minėtas versijas
     - `make clean`- jei norite ištrinti visas kompiliuotas versijas
 
-## Programos naudojimas
+</details>
 
-- Atsidarykite naujai sukompiliuotą programos versiją(-as).
+<details>
+<summary>Programos naudojamas</summary>
+<br>
+
+- Atsidarykite naujai instaliuotą ar sukompiliuotą programą.
 - Sekite instrukcijas, kurios rodomos konsolės langelyje.
 
 Programos paleidimo pavyzdys:
 ![pvz](https://raw.githubusercontent.com/low048/AntrasLaboratorinis/V1.1/TyrimuNuotraukos/PenktasTyrimas/struct/O3/2.png)
+
 
 </details>
 
@@ -58,6 +74,286 @@ Testavimas buvo atliktas su failais:
 - `studentai100000.txt` - 100k stud., 20 n.d., 25,098 KB (iš anksto generuotas, patalpintas VMA)
 - `studentai1000000.txt` - 1 mil. stud., 7 n.d., 124,024 KB (iš anksto generuotas, patalpintas VMA)
 - `studentai_10000000.txt` - 10 mil. stud., 15 n.d., 1,962,891 KB (iš savos atsitiktinių studentų failo generavimo funkcijos)
+
+# Pakeitimai (v3.0)
+
+- Sukurta sava Vector klasė, kaip std::vector alternatyva.
+
+## Kai kurių funkcijų aprašymai
+
+### `emplace_back`
+
+Ši funkcija sukuria elementą vektoriaus pabaigoje ir grąžina nuorodą į jį. 
+
+**Parametrai:** 
+- `Args&&... args` - Kintamųjų skaičius argumentų, kurie perduodami naujo objekto konstruktoriui.
+
+**Grąžinamas tipas:** `reference` - Nuoroda į naujai sukurtą elementą.
+
+<details>
+<summary>Veikimo pavyzdys</summary>
+<br>
+
+```cpp
+#include <vector>
+#include <cassert>
+#include <iostream>
+#include <string>
+ 
+struct President
+{
+    std::string name;
+    std::string country;
+    int year;
+ 
+    President(std::string p_name, std::string p_country, int p_year)
+        : name(std::move(p_name)), country(std::move(p_country)), year(p_year)
+    {
+        std::cout << "I am being constructed.\n";
+    }
+ 
+    President(President&& other)
+        : name(std::move(other.name)), country(std::move(other.country)), year(other.year)
+    {
+        std::cout << "I am being moved.\n";
+    }
+ 
+    President& operator=(const President& other) = default;
+};
+ 
+int main()
+{
+    std::vector<President> elections;
+    std::cout << "emplace_back:\n";
+    auto& ref = elections.emplace_back("Nelson Mandela", "South Africa", 1994);
+    assert(ref.year == 1994 && "uses a reference to the created object (C++17)");
+ 
+    std::vector<President> reElections;
+    std::cout << "\npush_back:\n";
+    reElections.push_back(President("Franklin Delano Roosevelt", "the USA", 1936));
+ 
+    std::cout << "\nContents:\n";
+    for (President const& president: elections)
+        std::cout << president.name << " was elected president of "
+                  << president.country << " in " << president.year << ".\n";
+ 
+    for (President const& president: reElections)
+        std::cout << president.name << " was re-elected president of "
+                  << president.country << " in " << president.year << ".\n";
+}
+```
+
+Išvestis:
+
+```
+std::vector<T,Allocator>::push_back Example
+std::vector letters_str holds: "abc" "def"
+Moved-from string s holds: ""
+
+std::vector<T,Allocator>::emplace_back Example
+emplace_back:
+I am being constructed.
+
+push_back:
+I am being constructed.
+I am being moved.
+```
+</details>
+
+### `insert_range`
+
+Ši funkcija įterpia elementus iš nurodyto intervalo į vektoriaus nurodytą poziciją.
+
+**Parametrai:**
+- `const_iterator pos` - Pozicija, į kurią bus įterpiami elementai.
+- `R&& rg` - Intervalas, iš kurio bus kopijuojami elementai.
+
+**Grąžinamas tipas:** `iterator` - Iteratorius į pirmą įterptą elementą.
+
+<details>
+<summary>Veikimo pavyzdys</summary>
+<br>
+
+```cpp
+#include <algorithm>
+#include <cassert>
+#include <iterator>
+#include <vector>
+#include <list>
+ 
+int main()
+{
+    auto container = std::vector{1, 2, 3, 4};
+    auto pos = std::next(container.begin(), 2);
+    assert(*pos == 3);
+    const auto rg = std::list{-1, -2, -3};
+ 
+#ifdef __cpp_lib_containers_ranges
+    container.insert_range(pos, rg);
+#else
+    container.insert(pos, rg.cbegin(), rg.cend());
+#endif
+    assert(std::ranges::equal(container, std::vector{1, 2, -1, -2, -3, 3, 4}));
+}
+```
+</details>
+
+### `erase_if`
+
+Ši funkcija ištrina visus elementus, kurie atitinka nurodytą sąlygą.
+
+**Parametrai:**
+- `Pred pred` - Predikatas, kuris nusprendžia, ar elementas turi būti ištrintas.
+
+**Grąžinamas tipas:** `size_type` - Ištrintų elementų skaičius.
+
+<details>
+<summary>Veikimo pavyzdys</summary>
+<br>
+
+```cpp
+#include <complex>
+#include <iostream>
+#include <numeric>
+#include <string_view>
+#include <vector>
+ 
+void println(std::string_view comment, const auto& c)
+{
+    std::cout << comment << "{ ";
+    for (const auto& x : c)
+        std::cout << x << ' ';
+    std::cout << "}\n";
+}
+ 
+int main()
+{
+    std::vector<char> cnt(10);
+    std::iota(cnt.begin(), cnt.end(), '0');
+    println("Initially, cnt = ", cnt);
+ 
+    std::erase(cnt, '3');
+    println("After erase '3', cnt = ", cnt);
+ 
+    auto erased = std::erase_if(cnt, [](char x) { return (x - '0') % 2 == 0; });
+    println("After erase all even numbers, cnt = ", cnt);
+    std::cout << "Erased even numbers: " << erased << '\n';
+ 
+    std::vector<std::complex<double>> nums{{2, 2}, {4, 2}, {4, 8}, {4, 2}};
+    #ifdef __cpp_lib_algorithm_default_value_type
+        std::erase(nums, {4, 2});
+    #else
+        std::erase(nums, std::complex<double>{4, 2});
+    #endif
+    println("After erase {4, 2}, nums = ", nums);
+}
+```
+
+Išvestis:
+
+```
+Initially, cnt = { 0 1 2 3 4 5 6 7 8 9 }
+After erase '3', cnt = { 0 1 2 4 5 6 7 8 9 }
+After erase all even numbers, cnt = { 1 5 7 9 }
+Erased even numbers: 5
+After erase {4, 2}, nums = { (2,2) (4,8) }
+```
+</details>
+
+### `assign`
+
+Ši funkcija priskiria vektoriui naujas reikšmes iš nurodyto intervalo.
+
+**Parametrai:**
+- `InputIt first` - Intervalo pradžia.
+- `InputIt last` - Intervalo pabaiga.
+
+**Grąžinamas tipas:** nėra (void).
+
+<details>
+<summary>Veikimo pavyzdys</summary>
+<br>
+
+```cpp
+#include <vector>
+#include <iostream>
+#include <string>
+ 
+int main()
+{
+    std::vector<char> characters;
+ 
+    auto print_vector = [&]()
+    {
+        for (char c : characters)
+            std::cout << c << ' ';
+        std::cout << '\n';
+    };
+ 
+    characters.assign(5, 'a');
+    print_vector();
+ 
+    const std::string extra(6, 'b');
+    characters.assign(extra.begin(), extra.end());
+    print_vector();
+ 
+    characters.assign({'C', '+', '+', '1', '1'});
+    print_vector();
+}
+```
+
+Išvestis:
+
+```
+a a a a a
+b b b b b b
+C + + 1 1
+```
+</details>
+
+### `push_back`
+
+Ši funkcija prideda elementą į vektoriaus pabaigą.
+
+**Parametrai:**
+- `const T& value` - Pridedamas elementas.
+
+**Grąžinamas tipas:** nėra (void).
+
+<details>
+<summary>Veikimo pavyzdys</summary>
+<br>
+
+```cpp
+#include <iomanip>
+#include <iostream>
+#include <string>
+#include <vector>
+ 
+int main()
+{
+    std::vector<std::string> letters;
+ 
+    letters.push_back("abc");
+    std::string s{"def"};
+    letters.push_back(std::move(s));
+ 
+    std::cout << "std::vector letters holds: ";
+    for (auto&& e : letters)
+        std::cout << std::quoted(e) << ' ';
+ 
+    std::cout << "\nMoved-from string s holds: " << std::quoted(s) << '\n';
+}
+```
+
+Išvestis:
+
+```
+std::vector letters holds: "abc" "def"
+Moved-from string s holds: ""
+```
+</details>
+<br>
 
 # Testavimo rezultatai (v3.0)
 

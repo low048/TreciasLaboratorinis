@@ -3,6 +3,7 @@
 #include "timer.h"
 
 int main() {
+    setlocale(LC_ALL, "en_US.utf8");
     Vector<Studentas> studentai;
     int meniuPasirinkimas = 0;
     double timeSum;
@@ -122,8 +123,8 @@ int main() {
                 } catch (std::exception& e) {
                     std::cout << "Nuskaitant failą įvyko klaida: " << e.what() << '\n';
                 }
-                std::cout << "Failo nuskaitymas į std::vector užtruko " << t.elapsed() << " s\n";
-                std::cout << "std::vector atminties perskirstymai: " << atmintiesPerskirstymai << std::endl;
+                std::cout << "Failo nuskaitymas į Vector užtruko " << t.elapsed() << " s\n";
+                std::cout << "Vector atminties perskirstymai: " << atmintiesPerskirstymai << std::endl;
                 break;
             }
             case 5: {

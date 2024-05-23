@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['v0_202_0',['Testavimo rezultatai (SENA VERSIJA - v0.2)',['../md__r_e_a_d_m_e.html#autotoc_md27',1,'']]],
+  ['v0_204_1',['Testavimo rezultatai (SENA VERSIJA - v0.4)',['../md__r_e_a_d_m_e.html#autotoc_md24',1,'']]],
+  ['v1_200_2',['Testavimo rezultatai (SENA VERSIJA - v1.0)',['../md__r_e_a_d_m_e.html#autotoc_md15',1,'']]],
+  ['v1_201_3',['Testavimo rezultatai (SENA VERSIJA - v1.1)',['../md__r_e_a_d_m_e.html#autotoc_md8',1,'']]],
+  ['v1_202_4',['Pakeitimai (SENA VERSIJA - v1.2)',['../md__r_e_a_d_m_e.html#autotoc_md5',1,'']]],
+  ['v1_205_5',['Pakeitimai (v1.5)',['../md__r_e_a_d_m_e.html#autotoc_md4',1,'']]],
+  ['value_5ftype_6',['value_type',['../class_vector.html#ad7f616a3b8800f8b2b4a982cd1886c11',1,'Vector']]],
+  ['vardas_5f_7',['vardas_',['../class_zmogus.html#a80e72cd553492344884a264a72ce33d2',1,'Zmogus']]],
+  ['vector_8',['Vector',['../class_vector.html',1,'Vector&lt; T, Allocator &gt;'],['../class_vector.html#ab31d2394e9546728b7b972fa1bf32f53',1,'Vector::Vector()'],['../class_vector.html#a62af81a7700b485b654739e3075c823d',1,'Vector::Vector(size_type count, const T &amp;value=T(), const Allocator &amp;alloc=Allocator())'],['../class_vector.html#ac65ed3c6755fac02b91b4b040bb2ab8c',1,'Vector::Vector(InputIt first, InputIt last, const Allocator &amp;alloc=Allocator())'],['../class_vector.html#a6c30cb6953c3e82407971f723bfc2ee7',1,'Vector::Vector(const Vector &amp;other)'],['../class_vector.html#acb152d0e8cabec10c1c7d4983dcebffb',1,'Vector::Vector(Vector &amp;&amp;other) noexcept'],['../class_vector.html#a26bea7e47830ca63174706896aae3d1f',1,'Vector::Vector(std::initializer_list&lt; T &gt; init, const Allocator &amp;alloc=Allocator())']]],
+  ['vector_3c_20int_20_3e_9',['Vector&lt; int &gt;',['../class_vector.html',1,'']]],
+  ['vectortest_10',['VectorTest',['../class_vector_test.html',1,'']]],
+  ['veikimo_20spartos_20palyginimas_11',['4-as tyrimas - rūšiavimo realizacijų veikimo spartos palyginimas',['../md__r_e_a_d_m_e.html#autotoc_md20',1,'']]],
+  ['veikimo_20spartos_20palyginimas_20naudojant_20skirtingus_20konteinerius_12',['3-as tyrimas - veiksmų su įvairaus dydžio failais veikimo spartos palyginimas naudojant skirtingus konteinerius',['../md__r_e_a_d_m_e.html#autotoc_md16',1,'']]],
+  ['veiksmų_20su_20įvairaus_20dydžio_20failais_20veikimo_20spartos_20palyginimas_20naudojant_20skirtingus_20konteinerius_13',['3-as tyrimas - veiksmų su įvairaus dydžio failais veikimo spartos palyginimas naudojant skirtingus konteinerius',['../md__r_e_a_d_m_e.html#autotoc_md16',1,'']]],
+  ['veiksmai_20su_20įvairaus_20dydžio_20failais_14',['2-as tyrimas – veiksmai su įvairaus dydžio failais',['../md__r_e_a_d_m_e.html#autotoc_md26',1,'']]],
+  ['versija_20v0_202_15',['Testavimo rezultatai (SENA VERSIJA - v0.2)',['../md__r_e_a_d_m_e.html#autotoc_md27',1,'']]],
+  ['versija_20v0_204_16',['Testavimo rezultatai (SENA VERSIJA - v0.4)',['../md__r_e_a_d_m_e.html#autotoc_md24',1,'']]],
+  ['versija_20v1_200_17',['Testavimo rezultatai (SENA VERSIJA - v1.0)',['../md__r_e_a_d_m_e.html#autotoc_md15',1,'']]],
+  ['versija_20v1_201_18',['Testavimo rezultatai (SENA VERSIJA - v1.1)',['../md__r_e_a_d_m_e.html#autotoc_md8',1,'']]],
+  ['versija_20v1_202_19',['Pakeitimai (SENA VERSIJA - v1.2)',['../md__r_e_a_d_m_e.html#autotoc_md5',1,'']]],
+  ['vid_20',['Rikiavimas pagal 3-ią pasirinkimą (galutinis pažymys, vid.)',['../md__r_e_a_d_m_e.html#autotoc_md30',1,'']]],
+  ['vienas_20naujas_20nepatenkinamų_20studentų_20konteineris_21',['2 strategija - tik vienas naujas nepatenkinamų studentų konteineris',['../md__r_e_a_d_m_e.html#autotoc_md22',1,'']]]
+];

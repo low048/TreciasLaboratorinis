@@ -352,7 +352,6 @@ std::vector letters holds: "abc" "def"
 Moved-from string s holds: ""
 ```
 </details>
-<br>
 
 # Testavimo rezultatai (v3.0)
 

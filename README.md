@@ -11,7 +11,6 @@
 
 <details>
 <summary>Pirminio kodo kompiliavimo instrukcija</summary>
-<br>
 
 ## Projekto persikėlimas į savo kompiuterį
 

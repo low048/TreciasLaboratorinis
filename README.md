@@ -44,7 +44,7 @@
 </details>
 
 <details>
-<summary>Programos naudojamas</summary>
+<summary>Programos naudojimas</summary>
 <br>
 
 - Atsidarykite naujai instaliuotą ar sukompiliuotą programą.

@@ -25,7 +25,10 @@
 - Atsidarykite `Cygwin64 Terminal`, tada jame įveskite:
     - `cd "C:\projekto\vieta\kompiuteryje"` (pvz. "cd C:\Users\User\Desktop\PirmasLaboratorinis", kuriame yra projekto kopija).
 <br>Galimų tolesnių komandų sąrašas:
-    - `make program` arba `make all` - jei norite kompiliuoti programą
+    - `make program` - jei norite kompiliuoti programą
+    - `make test` - jei norite kompiliuoti "unit tests"
+    - `make examples` - jei norite kompiliuoti Vector veikimo pavyzdžius
+    - `make all` - jei norite kompiliuoti visas anksčiau minėtas versijas
     - `make clean`- jei norite ištrinti visas kompiliuotas versijas
 
 ## Programos naudojimas
@@ -56,7 +59,50 @@ Testavimas buvo atliktas su failais:
 - `studentai1000000.txt` - 1 mil. stud., 7 n.d., 124,024 KB (iš anksto generuotas, patalpintas VMA)
 - `studentai_10000000.txt` - 10 mil. stud., 15 n.d., 1,962,891 KB (iš savos atsitiktinių studentų failo generavimo funkcijos)
 
-# Pakeitimai (v1.5)
+# Testavimo rezultatai (v3.0)
+
+## 6-as tyrimas - tuščių std::vector vs Vector konteinerių užpildymo spartos palyginimas
+
+Naudojamas 3 bandymų vidurkis.
+
+| Dydis       | std::vector (s) | Vector (s)  |
+|-------------|-----------------|-------------|
+| 10000       | 0.000318933     | 0.000263833 |
+| 100000      | 0.0026147       | 0.0025965   |
+| 1000000     | 0.0246464       | 0.0252233   |
+| 10000000    | 0.230314        | 0.278832    |
+| 100000000   | 2.2361          | 2.69485     |
+
+## 7-as tyrimas - veiksmų su įvairaus dydžio failais veikimo spartos palyginimas naudojant std::vector vs Vector
+### std::vector:
+
+| Veiksmas                                 | studentai100000.txt | studentai1000000.txt | studentai_1000000.txt |
+|------------------------------------------|---------------------|----------------------|-----------------------|
+| Duomenų nuskaitymas                      | 0.583564            | 2.90436              | 47.0824               |
+| Studentų rūšiavimas į dvi grupes         | 0.0206489           | 0.166762             | 1.75543               |
+| Studentų rikiavimas (pagal galutinį vid.)| 0.210474            | 2.71605              | 36.9104               |
+| Nepatenkinamų stud. įrašymas             | 0.101835            | 1.00919              | 6.36996               |
+| Patenkinamų stud. įrašymas               | 0.142624            | 1.40209              | 13.2886               |
+| Visas laikas (be įvesties)               | 1.06205             | 8.1996               | 105.409               |
+
+### Vector:
+
+| Veiksmas                                 | studentai100000.txt | studentai1000000.txt | studentai_1000000.txt |
+|------------------------------------------|---------------------|----------------------|-----------------------|
+| Duomenų nuskaitymas                      | 0.441618            | 1.97501              | 31.777                |
+| Studentų rūšiavimas į dvi grupes         | 0.0132866           | 0.0973608            | 1.1143                |
+| Studentų rikiavimas (pagal galutinį vid.)| 0.106655            | 1.36616              | 20.9515               |
+| Nepatenkinamų stud. įrašymas             | 0.10986             | 0.961898             | 9.04419               |
+| Patenkinamų stud. įrašymas               | 0.143081            | 1.42063              | 12.51                 |
+| Visas laikas (be įvesties)               | 0.815772            | 5.8222               | 75.3985               |
+
+
+# Pakeitimai (SENA VERSIJA - v2.0)
+
+- Sukurta programos kodo dokumentacija naudojant `Doxygen`.
+- Realizuoti unit testai naudojant `GoogleTest` karkasą.
+
+# Pakeitimai (SENA VERSIJA - v1.5)
 
 Vietoje vienos klasės `Studentas` sukurtos dvi: bazinė (abstrakti, negalima kurti jos objektų) klasė `Zmogus`, skirta bendrai aprašyti žmogų, ir iš jos išvestinė (derived) klasė - `Studentas`.
 

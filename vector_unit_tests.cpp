@@ -2,6 +2,7 @@
 #include "Vector.h"
 #include <string>
 #include <algorithm>
+#include <studentas.h>
 
 // Testų rinkinio šablonas Vector klasės testams
 class VectorTest : public ::testing::Test {
@@ -16,6 +17,14 @@ protected:
 // Testuoja numatytąjį konstruktorių
 TEST_F(VectorTest, DefaultConstructor) {
     Vector<int> v;
+    EXPECT_TRUE(v.empty());
+    EXPECT_EQ(v.size(), 0);
+    EXPECT_EQ(v.capacity(), 0);
+}
+
+// Testuoja numatytąjį konstruktorių
+TEST_F(VectorTest, DefaultConstructorSuStudentu) {
+    Vector<Studentas> v;
     EXPECT_TRUE(v.empty());
     EXPECT_EQ(v.size(), 0);
     EXPECT_EQ(v.capacity(), 0);

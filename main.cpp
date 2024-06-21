@@ -19,9 +19,10 @@ int main() {
             << "5 - Generuoti atsitiktinį studentų sąrašo failą\n"
             << "6 - Rūšiuoti studentus pagal nepatenkinamus ir patenkinamus galutinius įvertinimus\n"
             << "7 - Spartos analizė: std::vector vs Vector\n"
-            << "8 - Baigti darbą\n"
+            << "8 - Spartos analizė: std::vector vs Vector su studento objektais\n"
+            << "9 - Baigti darbą\n"
             << "Pasirinkimas: ";
-        meniuPasirinkimas = patikrintiSkaiciu(1, 8);
+        meniuPasirinkimas = patikrintiSkaiciu(1, 9);
         switch(meniuPasirinkimas) {
             case 1: {
                 //duomenys įvedami ranka
@@ -284,6 +285,42 @@ int main() {
                 break;
             }
             case 8: {
+                const std::vector<size_t> testu_dydziai = {10000, 100000, 1000000, 10000000, 100000000};
+                const int bandymai = 3;
+
+                std::cout << "Spartos analizė: std::vector vs Vector su studento objektais\n";
+
+                for (size_t dydis : testu_dydziai) {
+                    double std_vector_laikas = 0;
+                    double mano_vector_laikas = 0;
+
+                    for (int i = 0; i < bandymai; ++i) {
+                        std::vector<Studentas> v1;
+                        Timer timer;
+                        for (size_t j = 1; j <= dydis; ++j) {
+                            v1.push_back(Studentas());
+                        }
+                        std_vector_laikas += timer.elapsed();
+                    }
+                    std_vector_laikas /= bandymai;
+
+                    for (int i = 0; i < bandymai; ++i) {
+                        Vector<Studentas> v2;
+                        Timer timer;
+                        for (size_t j = 1; j <= dydis; ++j) {
+                            v2.push_back(Studentas());
+                        }
+                        mano_vector_laikas += timer.elapsed();
+                    }
+                    mano_vector_laikas /= bandymai;
+
+                    std::cout << "Dydis: " << dydis << "\n";
+                    std::cout << "std::vector (s): " << std_vector_laikas << "\n";
+                    std::cout << "Vector (s): " << mano_vector_laikas << "\n\n";
+                }
+                break;
+            }
+            case 9: {
                 //darbo baigimas, rikiavimas
                 std::cout << "Ar norite rikiuoti visų studentų sąrašą? (t/n): ";
                 bool arRikiuoti = patikrintiTaipNe();
@@ -300,7 +337,7 @@ int main() {
             default:
                 std::cout << "Netinkamas pasirinkimas, bandykite iš naujo.\n";
         }
-    } while(meniuPasirinkimas != 8);
+    } while(meniuPasirinkimas != 9);
     std::cout << "Išvesti į:\n1 - Konsolę\n2 - Failą\nPasirinkimas: ";
     int isvestiesPasirinkimas = patikrintiSkaiciu(1, 2);
     if (isvestiesPasirinkimas == 2) {
